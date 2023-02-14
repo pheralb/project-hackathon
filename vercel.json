@@ -1,0 +1,18 @@
+{
+  "installCommand": "npm install -g ultra-pkg && ultra i",
+  "buildCommand": "next build",
+  "redirects": [
+    {
+      "source": "/git",
+      "destination": "https://github.com/pheralb/project-hackathon"
+    },
+    {
+      "source": "/pheralb",
+      "destination": "https://twitter.com/pheralb_"
+    },
+    {
+      "source": "/tmchein",
+      "destination": "https://twitter.com/tmchein"
+    }
+  ]
+}

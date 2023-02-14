@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+node_modules/**
+.next
+.vercel
+e2e/setup/storage-state.json

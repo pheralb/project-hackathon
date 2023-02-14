@@ -1,6 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🛠️ Stack
 
-## Getting Started
+- **[Next.js](https://nextjs.org/)** with [TypeScript](https://www.typescriptlang.org/) - The React Framework for Production.
+- **[Supabase](https://supabase.io/)** - An open source Firebase alternative.
+- **[Tailwind CSS](https://tailwindcss.com/)** with [clsx](https://github.com/lukeed/clsx) - A utility-first CSS framework for rapidly building custom designs.
+- **[HeadlessUI](https://headlessui.dev/)** - Completely unstyled, fully accessible UI components.
+- **[Iconoir icons](https://iconoir.com/)** - A set of 1000+ free MIT-licensed high-quality SVG icons.
+- **[Prettier](https://prettier.io/)** with [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter + sort tailwindcss classes.
+- **[Zod](https://zod.dev/)** - TypeScript-first schema validation.
+
+## ✨ Features
+
+**✅ For the participant:**
+
+- [ ] The user can add his project.
+- [ ] The user can edit his project before a deadline.
+- [ ] When the deadline is reached, the user can only see the project.
+
+**✅ For the admin:**
+
+- [ ] The admin can add a new hackathon.
+- [ ] The admin can edit a hackathon.
+- [ ] The admin can delete a hackathon.
+- [ ] The admin can share the link to the hackathon.
+- [ ] The admin can see the list of participants.
+- [ ] The admin can see the list of projects.
+- [ ] The user can set a winner (mark a user as a winner).
+- [ ] The user can set a project as 'reviewed'.
+
+## 🚀 Getting Started
 
 First, run the development server:
 
