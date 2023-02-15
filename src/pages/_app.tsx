@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import NextNProgress from "nextjs-progressbar";
 
 // Styles:
 import clsx from "clsx";
@@ -15,8 +16,17 @@ const DmSans = DM_Sans({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={clsx(DmSans.variable, "font-sans")}>
-      <Component {...pageProps} />
-    </main>
+    <>
+      <NextNProgress
+        color="#979797"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={2}
+        showOnShallow={true}
+      />
+      <main className={clsx(DmSans.variable, "font-sans")}>
+        <Component {...pageProps} />
+      </main>
+    </>
   );
 }
