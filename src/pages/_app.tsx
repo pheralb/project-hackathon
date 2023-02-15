@@ -33,7 +33,7 @@ export default function App({
         color="#979797"
         startPosition={0.3}
         stopDelayMs={200}
-        height={2}
+        height={1}
         showOnShallow={true}
       />
       <main className={clsx(DmSans.variable, "font-sans")}>
