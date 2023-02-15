@@ -4,19 +4,20 @@
 - **[Supabase](https://supabase.io/)** - An open source Firebase alternative.
 - **[Tailwind CSS](https://tailwindcss.com/)** with [clsx](https://github.com/lukeed/clsx) - A utility-first CSS framework for rapidly building custom designs.
 - **[HeadlessUI](https://headlessui.dev/)** - Completely unstyled, fully accessible UI components.
+- **[Framer Motion](https://www.framer.com/motion/)** - A production-ready motion library for React.
 - **[Iconoir icons](https://iconoir.com/)** - A set of 1000+ free MIT-licensed high-quality SVG icons.
 - **[Prettier](https://prettier.io/)** with [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter + sort tailwindcss classes.
 - **[Zod](https://zod.dev/)** - TypeScript-first schema validation.
 
 ## ✨ Features
 
-**✅ For the participant:**
+**For the participant:**
 
 - [ ] The user can add his project.
 - [ ] The user can edit his project before a deadline.
 - [ ] When the deadline is reached, the user can only see the project.
 
-**✅ For the admin:**
+**For the admin:**
 
 - [ ] The admin can add a new hackathon.
 - [ ] The admin can edit a hackathon.
