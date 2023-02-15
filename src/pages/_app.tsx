@@ -17,6 +17,9 @@ const DmSans = DM_Sans({
   subsets: ["latin"],
 });
 
+// Layout:
+import Footer from "@/layout/footer";
+
 export default function App({
   Component,
   pageProps,
@@ -38,6 +41,7 @@ export default function App({
       />
       <main className={clsx(DmSans.variable, "font-sans")}>
         <Component {...pageProps} />
+        <Footer />
       </main>
     </SessionContextProvider>
   );

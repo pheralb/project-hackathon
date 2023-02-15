@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "iconoir-react";
-import Footer from "@/layout/footer";
 import { Link } from "@/ui/link";
 
 export default function Home() {
@@ -26,8 +25,8 @@ export default function Home() {
           className="transition-all duration-200 hover:translate-x-0.5"
         >
           <motion.div
-            initial={{ y: 0.3, opacity: 0 }}
-            animate={{ y: 0, opacity: 0.9 }}
+            initial={{ x: 0.3, opacity: 0 }}
+            animate={{ x: 0, opacity: 0.9 }}
             transition={{
               duration: 0.4,
               delay: 1,
@@ -40,16 +39,6 @@ export default function Home() {
           </motion.div>
         </Link>
       </div>
-      <motion.div
-        initial={{ y: 0.3, opacity: 0 }}
-        animate={{ y: 0, opacity: 0.9 }}
-        transition={{
-          duration: 0.4,
-          delay: 0.5,
-        }}
-      >
-        <Footer />
-      </motion.div>
     </>
   );
 }
