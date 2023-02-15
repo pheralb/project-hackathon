@@ -5,12 +5,11 @@ import { z } from "zod";
  */
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
-  SUPABASE_CLIENT_KEY: z.string(),
-  SUPABASE_CLIENT_URL: z.string(),
 });
 
 const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_URL: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
 });
 
 /**
@@ -20,8 +19,8 @@ const client = z.object({
  */
 const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
-  SUPABASE_CLIENT_KEY: process.env.SUPABASE_CLIENT_KEY,
-  SUPABASE_CLIENT_URL: process.env.SUPABASE_CLIENT_URL,
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 };
 
 const merged = server.merge(client);
