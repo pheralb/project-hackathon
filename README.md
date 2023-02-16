@@ -1,7 +1,6 @@
-<p align="center">
+<div align="center">
     <!-- <img src="" width="80" /> -->
-    <h2 align="center">Project Hackathon</h2>
-</p>
+</div>
 
 <p align="center">Open Source Hackathon Management</p>
 
