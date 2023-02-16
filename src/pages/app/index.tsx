@@ -19,7 +19,8 @@ const App = ({ data }: { data: User }) => {
           <EnterKey />
         </div>
         <Tip>
-          If you want to submit a project click on 'Enter hackathon key'.
+          If you want to submit a project click on{" "}
+          <strong>Enter hackathon key</strong>.
         </Tip>
       </div>
     </div>
