@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@radix-ui/react-dialog": "1.0.2",
     "@supabase/auth-helpers-nextjs": "0.5.4",
     "@supabase/auth-helpers-react": "0.3.1",
     "@supabase/supabase-js": "2.7.1",
