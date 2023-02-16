@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
-import Button from "@/ui/button";
+import { Button } from "@/ui/button";
 import { GitHub } from "iconoir-react";
 
 const Auth = () => {

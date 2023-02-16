@@ -8,15 +8,6 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import clsx from "clsx";
 import "@/styles/globals.css";
 
-// Font:
-import { DM_Sans } from "@next/font/google";
-const DmSans = DM_Sans({
-  weight: ["400", "500", "700"],
-  variable: "--dmsans-font",
-  preload: true,
-  subsets: ["latin"],
-});
-
 // Layout:
 import Footer from "@/layout/footer";
 
@@ -44,7 +35,7 @@ export default function App({
         height={1}
         showOnShallow={true}
       />
-      <main className={clsx(DmSans.variable, "font-sans")}>
+      <main className="font-sans">
         <Component {...pageProps} />
         <Footer />
       </main>
