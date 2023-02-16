@@ -1,3 +1,39 @@
+<p align="center">
+    <!-- <img src="" width="80" /> -->
+    <h2 align="center">Project Hackathon</h2>
+</p>
+
+<p align="center">Open Source Hackathon Management</p>
+
+<div align="center">
+    <a href="#-getting-started">
+        Getting Started
+    </a>
+    <span>&nbsp;❖&nbsp;</span>
+    <a href="#-features">
+        Features
+    </a>
+    <span>&nbsp;❖&nbsp;</span>
+    <a href="#%EF%B8%8F-stack">
+        Stack
+    </a>
+    <span>&nbsp;❖&nbsp;</span>
+    <a href="https://phck.vercel.app/" target="_blank">
+        Deploy
+    </a>
+</div>
+
+</p>
+
+<div align="center">
+
+![GitHub stars](https://img.shields.io/github/stars/pheralb/project-hackathon)
+![GitHub issues](https://img.shields.io/github/issues/pheralb/project-hackathon)
+![GitHub forks](https://img.shields.io/github/forks/pheralb/project-hackathon)
+![GitHub license](https://img.shields.io/github/license/pheralb/project-hackathon)
+
+</div>
+
 ## 🛠️ Stack
 
 - **[Next.js](https://nextjs.org/)** with [TypeScript](https://www.typescriptlang.org/) - The React Framework for Production.
