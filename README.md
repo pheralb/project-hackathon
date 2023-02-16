@@ -38,7 +38,7 @@
 - **[Next.js](https://nextjs.org/)** with [TypeScript](https://www.typescriptlang.org/) - The React Framework for Production.
 - **[Supabase](https://supabase.io/)** - An open source Firebase alternative.
 - **[Tailwind CSS](https://tailwindcss.com/)** with [clsx](https://github.com/lukeed/clsx) - A utility-first CSS framework for rapidly building custom designs.
-- **[HeadlessUI](https://headlessui.dev/)** - Completely unstyled, fully accessible UI components.
+- **[Radix UI Primitives](https://www.radix-ui.com/)** - Unstyled, accessible components for building high‑quality design systems.
 - **[Framer Motion](https://www.framer.com/motion/)** - A production-ready motion library for React.
 - **[Iconoir icons](https://iconoir.com/)** - A set of 1000+ free MIT-licensed high-quality SVG icons.
 - **[Prettier](https://prettier.io/)** with [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter + sort tailwindcss classes.
