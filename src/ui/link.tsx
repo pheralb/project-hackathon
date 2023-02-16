@@ -13,7 +13,7 @@ export const ExternalLink = (props: LinkProps) => {
   return (
     <a
       href={props.href}
-      rel="noreferer noopener"
+      rel="noreferrer"
       target="_blank"
       className={clsx(props.underline && "underline", props.className)}
     >

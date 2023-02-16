@@ -20,6 +20,10 @@ const DmSans = DM_Sans({
 // Layout:
 import Footer from "@/layout/footer";
 
+// SEO:
+import { DefaultSeo } from "next-seo";
+import { nextSeoConfig } from "next-seo.config";
+
 export default function App({
   Component,
   pageProps,
@@ -32,6 +36,7 @@ export default function App({
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession}
     >
+      <DefaultSeo {...nextSeoConfig} />
       <NextNProgress
         color="#979797"
         startPosition={0.3}
