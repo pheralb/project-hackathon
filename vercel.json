@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install -g ultra-pkg && ultra i",
+  "installCommand": "pnpm install",
   "buildCommand": "next build",
   "redirects": [
     {
