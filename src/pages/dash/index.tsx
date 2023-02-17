@@ -1,5 +1,3 @@
-import type { GetServerSidePropsContext } from "next";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { User } from "@supabase/supabase-js";
 import { Tip } from "@/ui";
 
@@ -9,9 +7,7 @@ import EnterKey from "@/components/enterKey";
 const Dashboard = ({ data }: { data: User }) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="mb-2 text-3xl font-medium">
-        👋 Welcome {data.user_metadata.full_name}
-      </h1>
+      <h1 className="mb-2 text-3xl font-medium">Welcome</h1>
       <p>What do you want to do?</p>
       <div className="mt-6 max-w-md">
         <div className="mb-2 flex w-full items-center justify-between space-x-2">
