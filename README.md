@@ -56,6 +56,11 @@
 
 ## ✨ Features
 
+**Global:**
+
+- [x] Authentication with Github.
+- [ ] Authentication with Google.
+
 **For the participant:**
 
 - [ ] The user can add his project.
@@ -149,13 +154,20 @@ We recommend deploying your app to Vercel. It makes it super easy to deploy Next
 📂 .vscode      | Visual Studio Code recommended extensions for the project.
 📂 public       | Images, fonts, manifest files.
 📂 src
-|- 📂 env       | Manage environment variables with Zod.
-|- 📂 layout    | All layouts.
-|- 📂 pages     | All the pages of the project.
-|- 📂 styles    | All the global styles of the project.
-|- 📂 ui        | Tailwind CSS UI components.
+|- 📂 components    | Global components.
+|- 📂 env           | Manage environment variables with Zod.
+|- 📂 layout        | All layouts.
+|- 📂 pages         | All the pages of the project.
+|- 📂 schema        | Zod schemas.
+|- 📂 styles        | All the global styles of the project.
+|- 📂 types         | Global types.
+|- 📂 ui            | Tailwind CSS UI components.
 ```
 
 ## ☁ Deploy
 
 - **Vercel**: [phck.vercel.app](phck.vercel.app)
+
+## 🔑 License
+
+- [**MIT License**](https://github.com/pheralb/project-hackathon/blob/main/LICENSE).
