@@ -14,7 +14,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@next/font": "13.1.6",
+    "@hookform/resolvers": "2.9.11",
     "@radix-ui/react-dialog": "1.0.2",
     "@supabase/auth-helpers-nextjs": "0.5.4",
     "@supabase/auth-helpers-react": "0.3.1",
@@ -28,6 +28,7 @@
     "nextjs-progressbar": "0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.43.1",
     "zod": "3.20.6"
   },
   "devDependencies": {
