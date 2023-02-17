@@ -5,8 +5,8 @@ import { Button } from "./button";
 
 interface ModalProps {
   btn: ReactNode;
-  action: () => void;
-  actionText: string;
+  action?: () => void;
+  actionText?: string;
   title: string;
   description: string;
   children: ReactNode;
@@ -30,11 +30,13 @@ const Modal = (props: ModalProps) => {
             <Dialog.Close asChild>
               <Button aria-label="Close">Cancel</Button>
             </Dialog.Close>
-            <Dialog.Close asChild>
-              <Button onClick={props.action} icon={props.icon}>
-                {props.actionText}
-              </Button>
-            </Dialog.Close>
+            {props.action && (
+              <Dialog.Close asChild>
+                <Button onClick={props.action} icon={props.icon}>
+                  {props.actionText}
+                </Button>
+              </Dialog.Close>
+            )}
           </div>
         </Dialog.Content>
       </Dialog.Portal>
