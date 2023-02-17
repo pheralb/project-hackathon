@@ -9,6 +9,10 @@
         Getting Started
     </a>
     <span>&nbsp;❖&nbsp;</span>
+    <a href="#-team">
+        Team
+    </a>
+    <span>&nbsp;❖&nbsp;</span>
     <a href="#-features">
         Features
     </a>
@@ -32,6 +36,11 @@
 ![GitHub license](https://img.shields.io/github/license/pheralb/project-hackathon)
 
 </div>
+
+## ✌ Team
+
+- [**@pheralb**](https://github.com/pheralb) - Pablo Hdez.
+- [**@tmchein**](https://github.com/tmchein) - Juan Rojas.
 
 ## 🛠️ Stack
 
