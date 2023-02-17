@@ -1,10 +1,10 @@
 import type { GetServerSidePropsContext } from "next";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { User } from "@supabase/supabase-js";
-
 import Tip from "@/ui/tip";
-import CreateNew from "@/components/app/createNew";
-import EnterKey from "@/components/app/enterKey";
+
+import CreateNew from "@/components/createNew";
+import EnterKey from "@/components/enterKey";
 
 const App = ({ data }: { data: User }) => {
   return (
