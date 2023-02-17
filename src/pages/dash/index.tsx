@@ -1,12 +1,12 @@
-// import type { GetServerSidePropsContext } from "next";
-// import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import type { GetServerSidePropsContext } from "next";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { User } from "@supabase/supabase-js";
 import { Tip } from "@/ui";
 
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 
-const App = ({ data }: { data: User }) => {
+const Dashboard = ({ data }: { data: User }) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="mb-2 text-3xl font-medium">
@@ -27,19 +27,19 @@ const App = ({ data }: { data: User }) => {
   );
 };
 
-// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-//   const supabase = createServerSupabaseClient(ctx);
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const supabase = createServerSupabaseClient(ctx);
 
-//   const {
-//     data: { session },
-//   } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-//   return {
-//     props: {
-//       initialSession: session,
-//       data: session?.user,
-//     },
-//   };
-// };
+  return {
+    props: {
+      initialSession: session,
+      data: session?.user,
+    },
+  };
+};
 
-export default App;
+export default Dashboard;
