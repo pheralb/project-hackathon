@@ -6,8 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Plus } from "iconoir-react";
-import { Button, ButtonLg } from "@/ui/button";
-import Modal from "@/ui/modal";
+import { Modal, Button, ButtonLg } from "@/ui";
 
 const CreateNew = () => {
   const [loading, setLoading] = useState(false);

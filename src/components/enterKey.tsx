@@ -1,7 +1,5 @@
 import { Send } from "iconoir-react";
-
-import { ButtonLg } from "@/ui/button";
-import Modal from "@/ui/modal";
+import { Modal, ButtonLg } from "@/ui";
 
 const EnterKey = () => {
   return (

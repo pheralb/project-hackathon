@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext } from "next";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { User } from "@supabase/supabase-js";
-import Tip from "@/ui/tip";
+import { Tip } from "@/ui";
 
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";

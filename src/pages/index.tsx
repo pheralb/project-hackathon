@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "iconoir-react";
-import { Link } from "@/ui/link";
+import { Link } from "@/ui";
 
 export default function Home() {
   return (

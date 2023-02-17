@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FrameSimple } from "iconoir-react";
-import { ExternalLink } from "@/ui/link";
+import { ExternalLink } from "@/ui";
 
 const Footer = () => {
   return (
