@@ -42,6 +42,7 @@
 - **[Framer Motion](https://www.framer.com/motion/)** - A production-ready motion library for React.
 - **[Iconoir icons](https://iconoir.com/)** - A set of 1000+ free MIT-licensed high-quality SVG icons.
 - **[Prettier](https://prettier.io/)** with [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter + sort tailwindcss classes.
+- **[React-Hook-Forms](https://react-hook-form.com/)** with [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers) - Performant, flexible and extensible forms with easy-to-use validation.
 - **[Zod](https://zod.dev/)** - TypeScript-first schema validation.
 
 ## ✨ Features
