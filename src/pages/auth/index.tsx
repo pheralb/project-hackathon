@@ -17,7 +17,7 @@ const Auth = () => {
       await supabaseClient.auth.signInWithOAuth({
         provider: "github",
       });
-      router.push("/app");
+      router.push("/dash");
     } catch (error) {
       alert(error);
     }
