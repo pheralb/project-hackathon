@@ -22,7 +22,7 @@
     </a>
     <span>&nbsp;❖&nbsp;</span>
     <a href="https://phck.vercel.app/" target="_blank">
-        Deploy
+        Deploy ↗︎
     </a>
 </div>
 
