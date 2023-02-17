@@ -1,5 +1,5 @@
-import type { GetServerSidePropsContext } from "next";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+// import type { GetServerSidePropsContext } from "next";
+// import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { User } from "@supabase/supabase-js";
 import { Tip } from "@/ui";
 
@@ -27,19 +27,19 @@ const App = ({ data }: { data: User }) => {
   );
 };
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const supabase = createServerSupabaseClient(ctx);
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+//   const supabase = createServerSupabaseClient(ctx);
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+//   const {
+//     data: { session },
+//   } = await supabase.auth.getSession();
 
-  return {
-    props: {
-      initialSession: session,
-      data: session?.user,
-    },
-  };
-};
+//   return {
+//     props: {
+//       initialSession: session,
+//       data: session?.user,
+//     },
+//   };
+// };
 
 export default App;
