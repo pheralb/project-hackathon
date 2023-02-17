@@ -30,7 +30,7 @@ const CreateNew = () => {
   return (
     <Modal
       btn={
-        <ButtonLg icon={<Plus width={30} />} isLoading={loading}>
+        <ButtonLg icon={<Plus width={30} />} loading={loading}>
           Create hackathon
         </ButtonLg>
       }
@@ -47,7 +47,7 @@ const CreateNew = () => {
           placeholder="Your name"
           {...register("name")}
         />
-        <Button type="submit" isLoading={isSubmitting}>
+        <Button type="submit" loading={isSubmitting}>
           Create new hackathon
         </Button>
       </form>

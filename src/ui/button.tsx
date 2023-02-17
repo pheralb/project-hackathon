@@ -8,7 +8,7 @@ export interface ButtonProps
   onClick?: () => void;
   className?: string;
   icon?: ReactNode;
-  isLoading?: boolean;
+  loading?: boolean;
   disabled?: boolean;
 }
 
@@ -21,21 +21,21 @@ export const Button = (props: ButtonProps) => {
         "hover:bg-neutral-800/60 hover:shadow-md",
         "outline-none focus:outline-none",
         "focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-50",
-        props.isLoading && "cursor-wait opacity-50",
+        props.loading && "cursor-wait opacity-50",
         props.disabled && "cursor-not-allowed opacity-50",
         props.className,
       )}
       onClick={props.onClick}
-      disabled={props.disabled || props.isLoading}
+      disabled={props.disabled || props.loading}
       {...props}
     >
       <div className="flex items-center justify-center">
-        {props.isLoading && (
+        {props.loading && (
           <div className="mr-3">
             <Ring size={20} color="white" />
           </div>
         )}
-        {props.icon && !props.isLoading && (
+        {props.icon && !props.loading && (
           <span className="mr-3">{props.icon}</span>
         )}
         <span>{props.children}</span>
@@ -53,21 +53,21 @@ export const ButtonLg = (props: ButtonProps) => {
         "hover:bg-neutral-800/60 hover:shadow-md",
         "outline-none focus:outline-none",
         "focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-50",
-        props.isLoading && "cursor-wait opacity-50",
+        props.loading && "cursor-wait opacity-50",
         props.disabled && "cursor-not-allowed opacity-50",
         props.className,
       )}
       onClick={props.onClick}
-      disabled={props.disabled || props.isLoading}
+      disabled={props.disabled || props.loading}
       {...props}
     >
       <div className="flex flex-col items-center justify-center">
-        {props.isLoading && (
+        {props.loading && (
           <div className="mr-3">
             <Ring size={20} color="white" />
           </div>
         )}
-        {props.icon && !props.isLoading && (
+        {props.icon && !props.loading && (
           <span className="mb-3">{props.icon}</span>
         )}
         <span>{props.children}</span>
