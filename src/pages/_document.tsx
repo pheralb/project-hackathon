@@ -11,6 +11,7 @@ export default function Document() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link rel="manifest" href="/manifest.json"></link>
       </Head>
       <body className="bg-midnight font-sans text-white">
         <Main />
