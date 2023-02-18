@@ -14,7 +14,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@hookform/resolvers": "2.9.11",
     "@radix-ui/react-dialog": "1.0.2",
     "@supabase/auth-helpers-nextjs": "0.5.4",
     "@supabase/auth-helpers-react": "0.3.1",
@@ -23,6 +22,7 @@
     "clsx": "1.2.1",
     "framer-motion": "9.0.2",
     "iconoir-react": "6.2.1",
+    "nanoid": "4.0.1",
     "next": "13.1.6",
     "next-seo": "5.15.0",
     "nextjs-progressbar": "0.0.16",
