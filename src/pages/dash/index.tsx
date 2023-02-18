@@ -1,8 +1,11 @@
+import type { GetServerSidePropsContext } from "next";
 import type { User } from "@supabase/supabase-js";
+
 import { Tip } from "@/ui";
 
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 const Dashboard = ({ data }: { data: User }) => {
   return (
@@ -23,19 +26,27 @@ const Dashboard = ({ data }: { data: User }) => {
   );
 };
 
-// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-//   const supabase = createServerSupabaseClient(ctx);
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  const supabase = createServerSupabaseClient(ctx);
 
-//   const {
-//     data: { session },
-//   } = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-//   return {
-//     props: {
-//       initialSession: session,
-//       data: session?.user,
-//     },
-//   };
-// };
+  if (!session)
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {
+      initialSession: session,
+      data: session?.user,
+    },
+  };
+};
 
 export default Dashboard;
