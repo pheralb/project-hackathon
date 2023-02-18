@@ -3,27 +3,36 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  // We need to create a response and hand it to the supabase client to be able to modify the response headers.
   const res = NextResponse.next();
-  // Create authenticated Supabase Client
   const supabase = createMiddlewareSupabaseClient({ req, res });
-  // Check if we have a session
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  // Check auth condition
-  if (session?.user.id) {
-    return res;
+  // Set Auth URL:
+  const isAuthPage = req.nextUrl.pathname.startsWith("/auth");
+
+  // If authenticated, redirect to dashboard:
+  if (isAuthPage) {
+    if (session?.user.id) {
+      return NextResponse.redirect(new URL("/dash", req.url));
+    }
+    return null;
   }
 
-  // Auth condition not met, redirect to home page.
-  const redirectUrl = req.nextUrl.clone();
-  redirectUrl.pathname = "/auth";
-  redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
-  return NextResponse.redirect(redirectUrl);
+  // If not authenticated, redirect to auth page:
+  if (!session?.user.id) {
+    let from = req.nextUrl.pathname;
+    if (req.nextUrl.search) {
+      from += req.nextUrl.search;
+    }
+
+    return NextResponse.redirect(
+      new URL(`/auth?from=${encodeURIComponent(from)}`, req.url),
+    );
+  }
 }
 
 export const config = {
-  matcher: "/dash/:slug*",
+  matcher: ["/dash/:path*", "/auth"],
 };
