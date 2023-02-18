@@ -50,7 +50,7 @@ const Auth = () => {
         <Button
           icon={<GitHub width={20} />}
           onClick={handleLoginWithGithub}
-          loading={loading}
+          loadingstatus={loading}
         >
           <span>Continue with Github</span>
         </Button>
