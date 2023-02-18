@@ -20,7 +20,7 @@ export default function Home() {
           </h1>
         </motion.div>
         <Link
-          href="app"
+          href="dash"
           underline={false}
           className="transition-all duration-200 hover:translate-x-0.5"
         >
