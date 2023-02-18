@@ -5,10 +5,10 @@ import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 // Styles:
-import clsx from "clsx";
 import "@/styles/globals.css";
 
 // Layout:
+import Header from "@/layout/header";
 import Footer from "@/layout/footer";
 
 // SEO:
@@ -36,6 +36,7 @@ export default function App({
         showOnShallow={true}
       />
       <main className="font-sans">
+        <Header />
         <Component {...pageProps} />
         <Footer />
       </main>
