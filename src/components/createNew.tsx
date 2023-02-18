@@ -1,55 +1,79 @@
 import type { THackathon } from "@/types/hackathon.type";
 import { useState } from "react";
-import { newHackathonSchema } from "@/schema";
-
+import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  useSessionContext,
+  useSupabaseClient,
+} from "@supabase/auth-helpers-react";
+import { nanoid } from "nanoid";
 
 import { Plus } from "iconoir-react";
-import { Modal, Button, ButtonLg } from "@/ui";
+import { Modal, Button, ButtonLg, Alert } from "@/ui";
 
 const CreateNew = () => {
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>();
+  const supabaseClient = useSupabaseClient();
+  const { session } = useSessionContext();
   const {
     register,
-    watch,
     handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<THackathon>({
-    resolver: zodResolver(newHackathonSchema),
-  });
+    formState: { errors },
+  } = useForm<THackathon>();
 
-  const onSubmit: SubmitHandler<THackathon> = (data) => {
+  const onSubmit: SubmitHandler<THackathon> = async (data) => {
+    let url = nanoid(10);
     try {
-      console.log(data);
+      setLoading(true);
+      await supabaseClient
+        .from("hackathon")
+        .insert({
+          name: data.name,
+          url: url,
+          description: "",
+          is_finished: false,
+          owner: session?.user.user_metadata.user_name,
+        })
+        .single();
+      router.push(`/dash/${url}`);
     } catch (err) {
-      console.log(err);
+      alert(err);
+      setLoading(false);
     }
   };
 
   return (
     <Modal
       btn={
-        <ButtonLg icon={<Plus width={30} />} loading={loading}>
+        <ButtonLg icon={<Plus width={30} />} disabled={loading}>
           Create hackathon
         </ButtonLg>
       }
       title="Create new hackathon"
-      action={() => alert("Create")}
-      actionText="Create"
       description="Create a new hackathon"
     >
-      <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <input
-          type="text"
           id="name"
-          className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 sm:text-sm"
-          placeholder="Your name"
-          {...register("name")}
+          className="focus:ring-primary-500 block w-full rounded-lg border border-neutral-800 bg-midnight py-2 px-3 text-white placeholder-neutral-400 focus:border-transparent focus:outline-none focus:ring-2"
+          placeholder="Hackathon name (max 25 characters)"
+          autoComplete="off"
+          disabled={loading}
+          {...register("name", {
+            required: "Hackathon name is required",
+            maxLength: {
+              value: 25,
+              message: "Hackathon name must be less than 25 characters",
+            },
+          })}
         />
-        <Button type="submit" loading={isSubmitting}>
-          Create new hackathon
-        </Button>
+        {errors.name && <Alert>{errors.name?.message}</Alert>}
+        <div className="flex flex-row-reverse">
+          <Button type="submit" disabled={loading} loadingstatus={loading}>
+            {loading ? "Creating..." : "Create"}
+          </Button>
+        </div>
       </form>
     </Modal>
   );
