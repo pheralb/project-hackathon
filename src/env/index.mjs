@@ -4,23 +4,32 @@ import { z } from "zod";
  * Define your environment variables here:
  */
 const server = z.object({
+  DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
+  NEXTAUTH_SECRET:
+    process.env.NODE_ENV === "production"
+      ? z.string().min(1)
+      : z.string().min(1).optional(),
+  NEXTAUTH_URL: z.preprocess(
+    (str) => process.env.VERCEL_URL ?? str,
+    process.env.VERCEL ? z.string().min(1) : z.string().url(),
+  ),
+  GITHUB_CLIENT_ID: z.string(),
+  GITHUB_CLIENT_SECRET: z.string(),
 });
 
-const client = z.object({
-  NEXT_PUBLIC_SUPABASE_URL: z.string().min(1),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
-});
+const client = z.object({});
 
 /**
- * You can't destruct `process.env` as a regular object in the Next.js
- * edge runtimes (e.g. middlewares) or client-side so we need to destruct manually.
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
+  DATABASE_URL: process.env.DATABASE_URL,
   NODE_ENV: process.env.NODE_ENV,
-  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
 };
 
 const merged = server.merge(client);
