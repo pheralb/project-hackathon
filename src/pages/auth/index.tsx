@@ -6,6 +6,8 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Button } from "@/ui";
 import { GitHub } from "iconoir-react";
 import Head from "next/head";
+import { GetServerSidePropsContext } from "next";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 const Auth = () => {
   const router = useRouter();
@@ -62,6 +64,29 @@ const Auth = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx);
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session)
+    return {
+      redirect: {
+        destination: "/dash",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {
+      initialSession: session,
+    },
+  };
 };
 
 export default Auth;

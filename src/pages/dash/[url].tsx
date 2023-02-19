@@ -53,6 +53,18 @@ export const getServerSideProps = async (
 
   // Create authenticated Supabase Client
   const supabase = createServerSupabaseClient(ctx);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  // Check session:
+  if (!session)
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
 
   // Fetch single row from table
   const { data } = await supabase
@@ -75,6 +87,7 @@ export const getServerSideProps = async (
     props: {
       url,
       data,
+      initialSession: session,
     },
   };
 };
