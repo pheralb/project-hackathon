@@ -1,10 +1,10 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { env } from "@/env/index.mjs";
 import { prisma } from "@/lib/prisma";
 
 // List of providers:
 import GithubProvider from "next-auth/providers/github";
+import { env } from "@/env/index.mjs";
 
 export const authOptions: NextAuthOptions = {
   // Callbacks:
@@ -41,8 +41,8 @@ export const authOptions: NextAuthOptions = {
   // Providers:
   providers: [
     GithubProvider({
-      clientId: env.GITHUB_CLIENT_ID,
-      clientSecret: env.GITHUB_CLIENT_SECRET,
+      clientId: env.GITHUB_CLIENT_ID || "",
+      clientSecret: env.GITHUB_CLIENT_SECRET || "",
       profile(profile) {
         return {
           id: profile.id.toString(),
