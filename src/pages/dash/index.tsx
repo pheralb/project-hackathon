@@ -1,6 +1,3 @@
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { GetServerSidePropsContext } from "next";
-
 import { Tip } from "@/ui";
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
@@ -22,30 +19,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  // Create authenticated Supabase Client
-  const supabase = createServerSupabaseClient(ctx);
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  // Redirect to auth page if not authenticated:
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {
-      initialSession: session,
-    },
-  };
 };
 
 export default Dashboard;

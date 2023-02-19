@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
+
+// Supabase config:
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
