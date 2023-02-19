@@ -1,27 +1,23 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { motion } from "framer-motion";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import Head from "next/head";
+import { signIn } from "next-auth/react";
 
+import { motion } from "framer-motion";
 import { Button } from "@/ui";
 import { GitHub } from "iconoir-react";
-import Head from "next/head";
-import { GetServerSidePropsContext } from "next";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 const Auth = () => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const supabaseClient = useSupabaseClient();
 
-  const handleLoginWithGithub = async () => {
+  const handleLogin = async (provider: string) => {
+    setLoading(true);
     try {
-      setLoading(true);
-      await supabaseClient.auth.signInWithOAuth({
-        provider: "github",
+      await signIn(provider, {
+        callbackUrl: `/dash`,
       });
     } catch (error) {
       alert(error);
+      setLoading(false);
     }
   };
 
@@ -55,7 +51,7 @@ const Auth = () => {
         >
           <Button
             icon={<GitHub width={20} />}
-            onClick={handleLoginWithGithub}
+            onClick={() => handleLogin("github")}
             loadingstatus={loading}
           >
             <span>Continue with Github</span>
@@ -64,29 +60,6 @@ const Auth = () => {
       </div>
     </>
   );
-};
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  // Create authenticated Supabase Client
-  const supabase = createServerSupabaseClient(ctx);
-  // Check if we have a session
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session)
-    return {
-      redirect: {
-        destination: "/dash",
-        permanent: false,
-      },
-    };
-
-  return {
-    props: {
-      initialSession: session,
-    },
-  };
 };
 
 export default Auth;

@@ -1,10 +1,9 @@
-import { useState } from "react";
-import type { AppProps } from "next/app";
+import type { AppType } from "next/app";
 import NextNProgress from "nextjs-progressbar";
 
-// Supabase config:
-import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+// Next-Auth:
+import { type Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
 
 // Styles:
 import "@/styles/globals.css";
@@ -17,18 +16,12 @@ import Footer from "@/layout/footer";
 import { DefaultSeo } from "next-seo";
 import { nextSeoConfig } from "next-seo.config";
 
-export default function App({
+const App: AppType<{ session: Session | null }> = ({
   Component,
-  pageProps,
-}: AppProps<{
-  initialSession: Session;
-}>) {
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
+  pageProps: { session, ...pageProps },
+}) => {
   return (
-    <SessionContextProvider
-      supabaseClient={supabaseClient}
-      initialSession={pageProps.initialSession}
-    >
+    <SessionProvider session={session}>
       <DefaultSeo {...nextSeoConfig} />
       <NextNProgress
         color="#979797"
@@ -43,6 +36,8 @@ export default function App({
         <Component {...pageProps} />
         <Footer />
       </main>
-    </SessionContextProvider>
+    </SessionProvider>
   );
-}
+};
+
+export default App;

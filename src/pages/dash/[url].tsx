@@ -1,27 +1,29 @@
 import Head from "next/head";
+import { getServerAuthSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+
 import type { THackathon } from "@/types/hackathon.type";
 import { GetServerSidePropsContext, PreviewData } from "next";
 import { ParsedUrlQuery } from "querystring";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
-import { Button, Link } from "@/ui";
-//import { ArrowLeft, KeyAltPlus, Settings } from "iconoir-react";
+import { Link } from "@/ui";
+import { ArrowLeft } from "iconoir-react";
 
-const DashUrl = ({ data }: { data: THackathon }) => {
+const DashUrl = ({ hackathonData }: { hackathonData: THackathon }) => {
   return (
     <div>
       <Head>
-        <title>{data.name} - Project Hackathon</title>
+        <title>{hackathonData.name} - Project Hackathon</title>
       </Head>
       <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
         <div className="flex items-center space-x-4">
           <Link href="/dash">
-            {/* <ArrowLeft
+            <ArrowLeft
               width={20}
               className="cursor-pointer transition-all hover:-translate-x-0.5"
-            /> */}
+            />
           </Link>
-          <h1 className="text-2xl font-medium">{data.name}</h1>
+          <h1 className="text-2xl font-medium">{hackathonData.name}</h1>
         </div>
         <div className="flex items-center space-x-3">
           {/* <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
@@ -44,6 +46,7 @@ export const getServerSideProps = async (
   ctx: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>,
 ) => {
   const { url } = ctx.query;
+  const session = await getServerAuthSession(ctx);
 
   // Cache data
   ctx.res.setHeader(
@@ -51,30 +54,16 @@ export const getServerSideProps = async (
     "public, s-maxage=10, stale-while-revalidate=59",
   );
 
-  // Create authenticated Supabase Client
-  const supabase = createServerSupabaseClient(ctx);
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  // Check session:
-  if (!session)
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-
-  // Fetch single row from table
-  const { data } = await supabase
-    .from("hackathon")
-    .select("*")
-    .eq("url", url)
-    .single();
+  // Fetch hackathon data from authenticated user:
+  const hackathonData = await prisma.hackathon.findMany({
+    where: {
+      url: url as string,
+      owner: session?.user?.id,
+    },
+  });
 
   // Redirect to 404 if no data
-  if (!data) {
+  if (!hackathonData) {
     return {
       redirect: {
         destination: "/404",
@@ -86,8 +75,7 @@ export const getServerSideProps = async (
   return {
     props: {
       url,
-      data,
-      initialSession: session,
+      hackathonData,
     },
   };
 };
