@@ -21,7 +21,7 @@
         Stack
     </a>
     <span>&nbsp;❖&nbsp;</span>
-    <a href="https://phck.vercel.app/" target="_blank">
+    <a href="https://phck.netlify.app" target="_blank">
         Deploy ↗︎
     </a>
 </div>
@@ -30,6 +30,7 @@
 
 <div align="center">
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2caa6428-299d-4dfc-898d-5c85df41c28a/deploy-status)](https://app.netlify.com/sites/phck/deploys)
 ![GitHub stars](https://img.shields.io/github/stars/pheralb/project-hackathon)
 ![GitHub issues](https://img.shields.io/github/issues/pheralb/project-hackathon)
 ![GitHub forks](https://img.shields.io/github/forks/pheralb/project-hackathon)
@@ -166,7 +167,7 @@ We recommend deploying your app to Vercel. It makes it super easy to deploy Next
 
 ## ☁ Deploy
 
-- **Vercel**: [phck.vercel.app](phck.vercel.app)
+- **Netlify** with Netlify Edge Functions: [https://phck.netlify.app](https://phck.netlify.app)
 
 ## 🔑 License
 
