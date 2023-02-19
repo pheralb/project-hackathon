@@ -46,13 +46,15 @@
 ## 🛠️ Stack
 
 - **[Next.js](https://nextjs.org/)** with [TypeScript](https://www.typescriptlang.org/) - The React Framework for Production.
-- **[Supabase](https://supabase.io/)** - An open source Firebase alternative.
+- **[Next-Auth](https://next-auth.js.org/)** - Authentication for Next.js.
+- **[Prisma](https://www.prisma.io/)** - Next-generation Node.js and TypeScript ORM.
+- **[CockroachDB](https://www.cockroachlabs.com/)** - The open source, cloud-native distributed SQL database.
 - **[Tailwind CSS](https://tailwindcss.com/)** with [clsx](https://github.com/lukeed/clsx) - A utility-first CSS framework for rapidly building custom designs.
 - **[Radix UI Primitives](https://www.radix-ui.com/)** - Unstyled, accessible components for building high‑quality design systems.
 - **[Framer Motion](https://www.framer.com/motion/)** - A production-ready motion library for React.
 - **[Iconoir icons](https://iconoir.com/)** - A set of 1000+ free MIT-licensed high-quality SVG icons.
 - **[Prettier](https://prettier.io/)** with [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) - An opinionated code formatter + sort tailwindcss classes.
-- **[React-Hook-Forms](https://react-hook-form.com/)** with [@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers) - Performant, flexible and extensible forms with easy-to-use validation.
+- **[React-Hook-Forms](https://react-hook-form.com/)** - Performant, flexible and extensible forms with easy-to-use validation.
 - **[Zod](https://zod.dev/)** - TypeScript-first schema validation.
 
 ## ✨ Features
@@ -81,7 +83,7 @@
 
 ## 🚀 Getting Started
 
-**Project settings:**
+### ⚙️ **Project settings:**
 
 1. Clone or [fork](git@github.com:pheralb/project-hackathon.git) the repository:
 
@@ -105,26 +107,39 @@ yarn install
 ultra install
 ```
 
+### ⚙️ **Environtment variables:**
+
 3. Create a `.env` file in the root of the project with the following variables:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+# CockroachDB connection string:
+DATABASE_URL = ""
+
+# Next-Auth config:
+NEXTAUTH_SECRET="" # Generate a random string.
+NEXTAUTH_URL="" # Your project url, e.g. http://localhost:3000.
+
+# Github OAuth Provider:
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
 ```
 
-**Supabase settings:**
+### ⚙️ **CockroachDB settings:**
 
-1. Create a new [Supabase account](https://app.supabase.com/).
-2. Create a new database & select the region.
-3. Go to **authentication** -> **providers** -> activate **Github** with your client ID, client secret & redirect url. Then click on 'Save'.
-4. Go to **project settings** -> **api**, copy the following variables and paste them into .env file:
+4. [**Create a free cluster**](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart.html?#create-a-free-cluster).
+5. [**Create a SQL user**](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart.html?#create-a-sql-user).
+6. To connect to the user, copy the connection string and paste it in the `.env` file,
+   replacing the `DATABASE_URL` variable.
 
-- **Project url**: _NEXT_PUBLIC_SUPABASE_URL_.
-- **Project API keys** -> **anon public**: _NEXT_PUBLIC_SUPABASE_ANON_KEY_.
+### ⚙️ **Github OAuth Provider settings:**
 
-**Run the development server:**
+7. [Click here to create new Github OAuth app](https://github.com/settings/applications/new).
+8. Go to "Client secrets" and generate new client secret and and paste it into GITHUB_CLIENT_SECRET env.
+9. Copy the Client ID and paste it into GITHUB_ID env.
 
-1. Run in your terminal:
+### ⚙️ **Run the project:**
+
+10. Run in your terminal:
 
 ```bash
 # with npm:
@@ -141,13 +156,6 @@ ultra dev
 ```
 
 and open [http://localhost:3000](http://localhost:3000) 🚀.
-
-**Deployment:**
-
-We recommend deploying your app to Vercel. It makes it super easy to deploy Next.js apps:
-
-- [Getting Started with Next.js on Vercel](https://vercel.com/docs/concepts/next.js/overview).
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 
 ## 📦 Overview
 
