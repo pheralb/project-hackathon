@@ -34,6 +34,7 @@ export default function App({
         stopDelayMs={200}
         height={1}
         showOnShallow={true}
+        options={{ showSpinner: false }}
       />
       <main className="font-sans">
         <Header />
