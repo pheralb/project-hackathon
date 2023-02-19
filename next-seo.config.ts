@@ -2,7 +2,7 @@ export const nextSeoConfig = {
   title: "Home",
   titleTemplate: "%s - Project Hackathon",
   description:
-    "An open-source hackathon management built with Next.js & Supabase",
+    "An open-source hackathon management built with Next.js & CockroachDB",
   defaultTitle: "project hackathon",
   additionalLinkTags: [
     {
