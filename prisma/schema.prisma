@@ -1,0 +1,108 @@
+// -----------------------------------
+// Initial config:
+// -----------------------------------
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "cockroachdb"
+    url      = env("DATABASE_URL")
+}
+
+model Widget {
+    id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+}
+
+// -----------------------------------
+// Tables:
+// -----------------------------------
+
+model Hackathon {
+    id            String          @id @default(cuid())
+    name          String
+    url           String
+    description   String
+    owner         User?           @relation(fields: [creatorId], references: [id])
+    creatorId     String
+    updatedAt     DateTime        @updatedAt
+    Participation Participation[]
+}
+
+model Participation {
+    id           String     @id @default(cuid())
+    is_reviewed  Boolean    @default(false)
+    is_winner    Boolean    @default(false)
+    title        String
+    description  String
+    url          String
+    team         String[]   @default([])
+    hackathon_id Hackathon? @relation(fields: [id], references: [id])
+    createdBy    User?      @relation(fields: [creatorId], references: [id])
+    creatorId    String
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
+
+    @@map(name: "participations")
+}
+
+// -----------------------------------
+// User:
+// -----------------------------------
+
+model Account {
+    id                String   @id @default(cuid())
+    userId            String
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String? // @db.Text
+    access_token      String? // @db.Text
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? // @db.Text
+    session_state     String?
+    createdAt         DateTime @default(now()) @map(name: "created_at")
+    updatedAt         DateTime @default(now()) @map(name: "updated_at")
+    user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+    @@map(name: "accounts")
+}
+
+model Session {
+    id           String   @id @default(cuid())
+    sessionToken String   @unique
+    userId       String
+    expires      DateTime
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map(name: "sessions")
+}
+
+model User {
+    id             String          @id @default(cuid())
+    name           String?
+    username       String?         @unique
+    email          String?         @unique
+    emailVerified  DateTime?
+    image          String?
+    access         Boolean         @default(true)
+    accounts       Account[]
+    sessions       Session[]
+    hackathons     Hackathon[]
+    participations Participation[]
+
+    @@map(name: "users")
+}
+
+model VerificationToken {
+    identifier String
+    token      String   @unique
+    expires    DateTime
+
+    @@unique([identifier, token])
+    @@map(name: "verification_tokens")
+}
