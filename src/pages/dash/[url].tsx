@@ -5,7 +5,7 @@ import { ParsedUrlQuery } from "querystring";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 import { Button, Link } from "@/ui";
-import { ArrowLeft, KeyAltPlus, Settings } from "iconoir-react";
+//import { ArrowLeft, KeyAltPlus, Settings } from "iconoir-react";
 
 const DashUrl = ({ data }: { data: THackathon }) => {
   return (
@@ -16,16 +16,16 @@ const DashUrl = ({ data }: { data: THackathon }) => {
       <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
         <div className="flex items-center space-x-4">
           <Link href="/dash">
-            <ArrowLeft
+            {/* <ArrowLeft
               width={20}
               className="cursor-pointer transition-all hover:-translate-x-0.5"
-            />
+            /> */}
           </Link>
           <h1 className="text-2xl font-medium">{data.name}</h1>
         </div>
         <div className="flex items-center space-x-3">
-          <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
-          <Button icon={<Settings width={18} />}>Settings</Button>
+          {/* <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
+          <Button icon={<Settings width={18} />}>Settings</Button> */}
         </div>
       </div>
       <div className="mt-8 flex flex-col items-center justify-center space-y-2">
