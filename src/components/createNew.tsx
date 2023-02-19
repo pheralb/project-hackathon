@@ -2,10 +2,6 @@ import type { THackathon } from "@/types/hackathon.type";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  useSessionContext,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react";
 import { nanoid } from "nanoid";
 
 import { Plus } from "iconoir-react";
@@ -14,8 +10,7 @@ import { Modal, Button, ButtonLg, Alert } from "@/ui";
 const CreateNew = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
-  const supabaseClient = useSupabaseClient();
-  const { session } = useSessionContext();
+
   const {
     register,
     handleSubmit,
@@ -26,16 +21,13 @@ const CreateNew = () => {
     let url = nanoid(10);
     try {
       setLoading(true);
-      await supabaseClient
-        .from("hackathon")
-        .insert({
-          name: data.name,
-          url: url,
-          description: "",
-          is_finished: false,
-          owner: session?.user.user_metadata.user_name,
-        })
-        .single();
+      // await prisma.hackathon.create({
+      //   data: {
+      //     name: data.name,
+      //     url: url,
+      //     description: data.description,
+      //   },
+      // });
       router.push(`/dash/${url}`);
     } catch (err) {
       alert(err);

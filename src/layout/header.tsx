@@ -1,23 +1,17 @@
-import { motion } from "framer-motion";
-import {
-  useSessionContext,
-  useSupabaseClient,
-} from "@supabase/auth-helpers-react";
+import { signOut, useSession } from "next-auth/react";
 
-import { FrameSimple } from "iconoir-react";
-import { Button, ExternalLink, Link } from "@/ui";
+import { motion } from "framer-motion";
+import { Button, Link } from "@/ui";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 const Header = () => {
-  const supabaseClient = useSupabaseClient();
-  const { session } = useSessionContext();
-  const router = useRouter();
+  const { data: session } = useSession();
 
   const handleLogout = async () => {
     try {
-      const { error } = await supabaseClient.auth.signOut();
-      router.push("/");
+      await signOut({
+        callbackUrl: "/",
+      });
     } catch (error) {
       alert(error);
     }
@@ -47,11 +41,8 @@ const Header = () => {
         </Link>
         {session && (
           <div className="flex items-center space-x-3">
-            <img
-              src={session.user.user_metadata.avatar_url}
-              className="h-6 w-6 rounded-full"
-            />
-            <p>{session.user.user_metadata.name}</p>
+            <img src={session.user.image} className="h-6 w-6 rounded-full" />
+            <p>{session.user.name}</p>
             <span className="text-gray-400">|</span>
             <Button onClick={handleLogout}>Sign out</Button>
           </div>
