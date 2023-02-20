@@ -20,14 +20,16 @@ model Widget {
 // -----------------------------------
 
 model Hackathon {
-    id            String          @id @default(cuid())
-    name          String
-    url           String
-    description   String
-    owner         User?           @relation(fields: [creatorId], references: [id])
-    creatorId     String
-    updatedAt     DateTime        @updatedAt
-    Participation Participation[]
+    id             String          @id @default(cuid())
+    name           String
+    url            String
+    description    String?
+    owner          User?           @relation(fields: [creatorId], references: [id])
+    creatorId      String
+    updatedAt      DateTime        @default(now()) @updatedAt
+    participations Participation[]
+
+    @@map(name: "hackathons")
 }
 
 model Participation {
