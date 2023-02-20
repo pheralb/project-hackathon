@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/git"
+  to = "https://github.com/pheralb/project-hackathon"
+
+[build.environment]
+   NODE_VERSION = "16"
+
+[build]
+  command = "pnpm run build"
