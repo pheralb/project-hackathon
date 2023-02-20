@@ -8,7 +8,7 @@ interface ModalProps {
   action?: () => void;
   actionText?: string;
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
   icon?: ReactNode;
 }

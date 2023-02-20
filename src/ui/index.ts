@@ -14,3 +14,6 @@ export { default as Tip } from "./tip";
 
 // Alert:
 export { default as Alert } from "./alert";
+
+// Input:
+export { default as Input } from "./input";
