@@ -12,7 +12,9 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "postinstall": "prisma generate",
+    "ts:check": "tsc --noEmit",
     "dbpush": "npx prisma db push",
     "studio": "npx prisma studio"
   },
