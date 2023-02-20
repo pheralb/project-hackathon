@@ -53,6 +53,16 @@ export const getServerSideProps = async (
   const { url } = ctx.query;
   const session = await getServerAuthSession(ctx);
 
+  // Check authentication:
+  if (!session?.user) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
   // Cache data
   ctx.res.setHeader(
     "Cache-Control",

@@ -9,7 +9,6 @@ import { THackathon } from "@/types/hackathon.type";
 import HackathonCard from "@/components/hackathonCard";
 
 const Dashboard = ({ hackathons }: { hackathons: THackathon[] }) => {
-  console.log(hackathons);
   return (
     <>
       <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
@@ -42,11 +41,15 @@ const Dashboard = ({ hackathons }: { hackathons: THackathon[] }) => {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const session = await getServerAuthSession(ctx);
 
-  // Cache data
-  ctx.res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59",
-  );
+  // Check authentication:
+  if (!session?.user) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
 
   // Fetch hackathon data from authenticated user:
   const hackathons = await prisma.hackathon.findMany({
