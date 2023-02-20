@@ -2,13 +2,12 @@ import type { THackathon } from "@/types/hackathon.type";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { nanoid } from "nanoid";
 
-import { Plus } from "iconoir-react";
-import { Modal, Button, ButtonLg, Alert, Tip } from "@/ui";
+import { SaveFloppyDisk, Settings } from "iconoir-react";
+import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
 
-const CreateNew = () => {
+const EditHackathon = (props: THackathon) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
 
@@ -19,20 +18,19 @@ const CreateNew = () => {
   } = useForm<THackathon>();
 
   const onSubmit: SubmitHandler<THackathon> = async (data) => {
-    let url = nanoid(10);
     try {
       setLoading(true);
-      await fetch("/api/functions/create", {
+      await fetch("/api/functions/edit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          id: props.id,
           ...data,
-          url,
         }),
       });
-      router.push(`/dash/${url}`);
+      router.reload();
     } catch (err) {
       alert(err);
       setLoading(false);
@@ -41,19 +39,15 @@ const CreateNew = () => {
 
   return (
     <Modal
-      btn={
-        <Button icon={<Plus width={30} />} disabled={loading}>
-          Create hackathon
-        </Button>
-      }
-      title="Create new hackathon"
-      description="Create a new hackathon"
+      btn={<Button icon={<Settings width={18} />}>Settings</Button>}
+      title="Settings"
     >
       <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-6">
           <label htmlFor="name">Title:</label>
           <input
             id="name"
+            defaultValue={props.name}
             className={inputStyles}
             placeholder="Hackathon name (max 25 characters)"
             autoComplete="off"
@@ -72,6 +66,7 @@ const CreateNew = () => {
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
+            defaultValue={props.description}
             className={inputStyles}
             placeholder="Description (max 200 characters)"
             autoComplete="off"
@@ -85,10 +80,14 @@ const CreateNew = () => {
           />
           {errors.description && <Alert>{errors.description?.message}</Alert>}
         </div>
-        <Tip>You can edit all later in the hackathon settings.</Tip>
         <div className="flex flex-row-reverse">
-          <Button type="submit" disabled={loading} loadingstatus={loading}>
-            {loading ? "Creating..." : "Create"}
+          <Button
+            type="submit"
+            disabled={loading}
+            loadingstatus={loading}
+            icon={<SaveFloppyDisk width={17} />}
+          >
+            {loading ? "Saving..." : "Save"}
           </Button>
         </div>
       </form>
@@ -96,4 +95,4 @@ const CreateNew = () => {
   );
 };
 
-export default CreateNew;
+export default EditHackathon;

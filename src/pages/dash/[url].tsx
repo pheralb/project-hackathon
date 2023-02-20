@@ -6,39 +6,44 @@ import type { THackathon } from "@/types/hackathon.type";
 import { GetServerSidePropsContext, PreviewData } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-import { Link } from "@/ui";
-import { ArrowLeft } from "iconoir-react";
+import { Button, Link } from "@/ui";
+import { ArrowLeft, KeyAltPlus } from "iconoir-react";
 
-const DashUrl = ({ hackathonData }: { hackathonData: THackathon }) => {
+import EditHackathon from "@/components/editHackathon";
+
+const DashUrl = ({ hackathonData }: { hackathonData: THackathon[] }) => {
   return (
-    <div>
-      <Head>
-        <title>{hackathonData.name} - Project Hackathon</title>
-      </Head>
-      <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
-        <div className="flex items-center space-x-4">
-          <Link href="/dash">
-            <ArrowLeft
-              width={20}
-              className="cursor-pointer transition-all hover:-translate-x-0.5"
-            />
-          </Link>
-          <h1 className="text-2xl font-medium">{hackathonData.name}</h1>
+    hackathonData &&
+    hackathonData.map((hackathon) => (
+      <div key={hackathon.id}>
+        <Head>
+          <title>{hackathon.name} - Project Hackathon</title>
+        </Head>
+        <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
+          <div className="flex items-center space-x-4">
+            <Link href="/dash">
+              <ArrowLeft
+                width={20}
+                className="cursor-pointer transition-all hover:-translate-x-0.5"
+              />
+            </Link>
+            <h1 className="text-2xl font-medium">{hackathon.name}</h1>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
+            <EditHackathon {...hackathon} />
+          </div>
         </div>
-        <div className="flex items-center space-x-3">
-          {/* <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
-          <Button icon={<Settings width={18} />}>Settings</Button> */}
+        <div className="mt-8 flex flex-col items-center justify-center space-y-2">
+          <h1 className="text-2xl">🎉 Your hackathon is ready!</h1>
+          <div className="flex flex-col space-y-2">
+            <p className="text-gray-400">
+              Share the following link with your team members to get started.
+            </p>
+          </div>
         </div>
       </div>
-      <div className="mt-8 flex flex-col items-center justify-center space-y-2">
-        <h1 className="text-2xl">🎉 Your hackathon is ready!</h1>
-        <div className="flex flex-col space-y-2">
-          <p className="text-gray-400">
-            Share the following link with your team members to get started.
-          </p>
-        </div>
-      </div>
-    </div>
+    ))
   );
 };
 
@@ -58,12 +63,12 @@ export const getServerSideProps = async (
   const hackathonData = await prisma.hackathon.findMany({
     where: {
       url: url as string,
-      owner: session?.user?.id,
+      creatorId: session?.user?.id,
     },
   });
 
   // Redirect to 404 if no data
-  if (!hackathonData) {
+  if (hackathonData.length === 0 || !session) {
     return {
       redirect: {
         destination: "/404",
@@ -75,7 +80,7 @@ export const getServerSideProps = async (
   return {
     props: {
       url,
-      hackathonData,
+      hackathonData: JSON.parse(JSON.stringify(hackathonData)),
     },
   };
 };
