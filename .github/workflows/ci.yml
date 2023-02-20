@@ -1,4 +1,4 @@
-name: CI
+name: ⚙️ Check
 
 on:
   push:
@@ -16,6 +16,8 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.27.1
 
       - uses: actions/setup-node@v3
         with:
@@ -39,6 +41,8 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.27.1
 
       - uses: actions/setup-node@v3
         with:
