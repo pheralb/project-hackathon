@@ -7,6 +7,8 @@ import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 import HackathonCard from "@/components/hackathonCard";
 import Loading from "@/components/loading";
+import { GetServerSideProps } from "next";
+import { getServerAuthSession } from "@/lib/auth";
 
 const Dashboard = () => {
   const { data, isLoading } = useSWR("/api/routes/getAll", fetcher);
@@ -39,6 +41,23 @@ const Dashboard = () => {
       )}
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
 };
 
 export default Dashboard;

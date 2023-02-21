@@ -9,6 +9,8 @@ import { ArrowLeft, KeyAltPlus } from "iconoir-react";
 import EditHackathon from "@/components/editHackathon";
 import { THackathon } from "@/types/hackathon.type";
 import Loading from "@/components/loading";
+import { GetServerSideProps } from "next";
+import { getServerAuthSession } from "@/lib/auth";
 
 const DashUrl = () => {
   const router = useRouter();
@@ -59,6 +61,23 @@ const DashUrl = () => {
       )}
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
 };
 
 export default DashUrl;
