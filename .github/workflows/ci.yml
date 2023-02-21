@@ -14,23 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js 16.x
-        uses: pnpm/action-setup@v2.2.4
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          version: 7
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "pnpm"
+          node-version: 18.x
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run linter
         run: |
-          pnpm lint
-          pnpm format:check
+          npm run lint
         env:
           SKIP_ENV_VALIDATION: true
 
@@ -39,18 +33,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.4
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          version: 7
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "pnpm"
+          node-version: 18.x
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Run typecheck
-        run: pnpm ts:check
+        run: npm run ts:check
