@@ -20,7 +20,7 @@ const EditHackathon = (props: THackathon) => {
   const onSubmit: SubmitHandler<THackathon> = async (data) => {
     try {
       setLoading(true);
-      await fetch("/api/functions/edit", {
+      await fetch("/api/routes/edit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

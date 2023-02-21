@@ -22,7 +22,7 @@ const CreateNew = () => {
     let url = nanoid(10);
     try {
       setLoading(true);
-      await fetch("/api/functions/create", {
+      await fetch("/api/routes/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
