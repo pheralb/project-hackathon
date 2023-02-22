@@ -17,3 +17,13 @@ export const prisma =
 if (env.NODE_ENV !== "production") {
   global.prisma = prisma;
 }
+
+(async () => {
+  try {
+    console.log(await prisma.widget.create({ data: {} }));
+  } catch (err) {
+    console.error("error executing query:", err);
+  } finally {
+    prisma.$disconnect();
+  }
+})();
