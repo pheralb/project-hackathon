@@ -3,7 +3,7 @@ import Head from "next/head";
 import { signIn } from "next-auth/react";
 
 import { Button } from "@/ui";
-import { GitHub } from "iconoir-react";
+import { Github } from "@/ui/icons";
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ const Auth = () => {
           {loading ? "Logging in..." : "Sign in to continue"}
         </h1>
         <Button
-          icon={<GitHub width={20} />}
+          icon={<Github width={20} />}
           onClick={() => handleLogin("github")}
           loadingstatus={loading}
         >

@@ -1,4 +1,4 @@
-import { ArrowRight } from "iconoir-react";
+import { ArrowRight } from "@/ui/icons";
 import { Link } from "@/ui";
 
 export default function Home() {

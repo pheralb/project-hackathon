@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import { Button, Link } from "@/ui";
-import { ArrowLeft, KeyAltPlus } from "iconoir-react";
+import { ArrowLeft, KeyAltPlus } from "@/ui/icons";
 import EditHackathon from "@/components/editHackathon";
 import Loading from "@/components/loading";
 import { getServerAuthSession } from "@/lib/auth";

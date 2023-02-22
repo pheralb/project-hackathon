@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { SaveFloppyDisk, Settings } from "iconoir-react";
+import { SaveFloppyDisk, Settings } from "@/ui/icons";
 import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
 import { updateHackathon } from "@/schema";

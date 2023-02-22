@@ -1,4 +1,4 @@
-import { FrameSimple } from "iconoir-react";
+import { FrameSimple } from "@/ui/icons";
 import { ExternalLink } from "@/ui";
 
 const Footer = () => {

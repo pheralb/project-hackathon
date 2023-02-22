@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 
-import { Plus } from "iconoir-react";
+import { Plus } from "@/ui/icons";
 import { Modal, Button, Alert, Tip } from "@/ui";
 import { inputStyles } from "@/ui/input";
 

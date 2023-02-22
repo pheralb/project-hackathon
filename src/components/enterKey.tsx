@@ -1,4 +1,4 @@
-import { Send } from "iconoir-react";
+import { Send } from "@/ui/icons";
 import { Modal, Button } from "@/ui";
 
 const EnterKey = () => {
