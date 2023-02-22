@@ -4,7 +4,7 @@ import { Modal, Button } from "@/ui";
 const EnterKey = () => {
   return (
     <Modal
-      btn={<Button icon={<Send width={30} />}>Send project</Button>}
+      btn={<Button icon={<Send width={18} />}>Send project</Button>}
       title="Enter hackathon key"
       action={() => alert("Create")}
       actionText="Create"

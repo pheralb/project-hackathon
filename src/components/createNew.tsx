@@ -1,5 +1,6 @@
-import type { THackathon } from "@/types/hackathon.type";
+import { api } from "@/trpc/api";
 import { useState } from "react";
+import type { THackathon } from "@/types/hackathon.type";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
@@ -11,7 +12,7 @@ import { inputStyles } from "@/ui/input";
 const CreateNew = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
-  let url = nanoid(10);
+  let url = nanoid(6);
 
   const {
     register,
@@ -19,20 +20,24 @@ const CreateNew = () => {
     formState: { errors },
   } = useForm<THackathon>();
 
-  const onSubmit: SubmitHandler<THackathon> = async (data) => {
+  const { mutate } = api.hackathon.createHackathon.useMutation({
+    onSuccess: () => {
+      router.push(`/dash/${url}`);
+      setLoading(false);
+    },
+    onError: () => {
+      setLoading(false);
+    },
+  });
+
+  const onSubmit: SubmitHandler<THackathon> = (data) => {
     try {
       setLoading(true);
-      await fetch("/api/routes/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          url,
-        }),
+      mutate({
+        ...data,
+        url,
+        is_finished: false,
       });
-      router.push(`/dash/${url}`);
     } catch (err) {
       alert(err);
       setLoading(false);
@@ -42,7 +47,7 @@ const CreateNew = () => {
   return (
     <Modal
       btn={
-        <Button icon={<Plus width={30} />} disabled={loading}>
+        <Button icon={<Plus width={18} />} disabled={loading}>
           Create hackathon
         </Button>
       }

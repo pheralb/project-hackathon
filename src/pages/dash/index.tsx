@@ -29,37 +29,39 @@ const Dashboard = () => {
           <CreateNew />
         </div>
       </div>
-      <Input value={filter} onChange={(e) => setFilter(e.target.value)} />
-      {isLoading ? (
-        <div className="mt-6">
-          <Loading />
-        </div>
-      ) : hackathons && hackathons?.length > 0 ? (
-        <div className="container mx-auto mt-6">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {hackathons.map((hackathon: Hackathon) => (
-              <HackathonCard
-                key={hackathon.id}
-                name={hackathon.name}
-                description={hackathon.description || "No description"}
-                url={hackathon.url}
-              />
-            ))}
+      <div className="mx-auto mt-6 max-w-6xl">
+        <Input value={filter} onChange={(e) => setFilter(e.target.value)} />
+        {isLoading ? (
+          <div className="mt-6">
+            <Loading />
           </div>
-        </div>
-      ) : (
-        <Tip>
-          You don&apos;t have any hackathons yet. Create one by clicking the
-          button above.
-        </Tip>
-      )}
-      {error && (
-        <Tip>
-          <p className="text-red-500">
-            Error: {error.data?.code} - {error.message}
-          </p>
-        </Tip>
-      )}
+        ) : hackathons && hackathons?.length > 0 ? (
+          <div className="container mx-auto mt-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {hackathons.map((hackathon: Hackathon) => (
+                <HackathonCard
+                  key={hackathon.id}
+                  name={hackathon.name}
+                  description={hackathon.description || "No description"}
+                  url={hackathon.url}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <Tip>
+            You don&apos;t have any hackathons yet. Create one by clicking the
+            button above.
+          </Tip>
+        )}
+        {error && (
+          <Tip>
+            <p className="text-red-500">
+              Error: {error.data?.code} - {error.message}
+            </p>
+          </Tip>
+        )}
+      </div>
     </>
   );
 };

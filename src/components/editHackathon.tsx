@@ -7,6 +7,7 @@ import { SaveFloppyDisk, Settings } from "@/ui/icons";
 import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
 import { updateHackathon } from "@/schema";
+import { api } from "@/trpc/api";
 
 const EditHackathon = (props: updateHackathon) => {
   const router = useRouter();
@@ -18,20 +19,24 @@ const EditHackathon = (props: updateHackathon) => {
     formState: { errors },
   } = useForm<THackathon>();
 
-  const onSubmit: SubmitHandler<THackathon> = async (data) => {
+  const { mutate } = api.hackathon.editHackathon.useMutation({
+    onSuccess: () => {
+      setLoading(false);
+      router.reload();
+    },
+    onError: () => {
+      setLoading(false);
+    },
+  });
+
+  const onSubmit: SubmitHandler<THackathon> = (data) => {
     try {
       setLoading(true);
-      await fetch("/api/routes/edit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: props.id,
-          ...data,
-        }),
+      mutate({
+        ...data,
+        id: props.id,
+        is_finished: false,
       });
-      router.reload();
     } catch (err) {
       alert(err);
       setLoading(false);
