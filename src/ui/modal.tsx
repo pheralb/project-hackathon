@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Cancel } from "iconoir-react";
+import { Cancel } from "@/ui/icons";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "./button";
 
