@@ -1,8 +1,13 @@
-import { THackathon } from "@/types/hackathon.type";
+import { allHackathons } from "@/schema";
 import { Link } from "@/ui";
-import { ArrowTrCircle, ArrowTrSquare } from "iconoir-react";
 
-const HackathonCard = (props: THackathon) => {
+interface hackathonCardProps {
+  name: string;
+  description: string;
+  url: string;
+}
+
+const HackathonCard = (props: hackathonCardProps) => {
   return (
     <Link href={`/dash/${props.url}`} className="max-w-sm">
       <div className="cursor-pointer rounded-md border border-neutral-700/40 bg-neutral-800/50 p-4 transition-all duration-100 hover:bg-neutral-800">

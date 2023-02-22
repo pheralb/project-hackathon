@@ -5,12 +5,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 
 import { Plus } from "iconoir-react";
-import { Modal, Button, ButtonLg, Alert, Tip } from "@/ui";
+import { Modal, Button, Alert, Tip } from "@/ui";
 import { inputStyles } from "@/ui/input";
 
 const CreateNew = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
+  let url = nanoid(10);
 
   const {
     register,
@@ -19,7 +20,6 @@ const CreateNew = () => {
   } = useForm<THackathon>();
 
   const onSubmit: SubmitHandler<THackathon> = async (data) => {
-    let url = nanoid(10);
     try {
       setLoading(true);
       await fetch("/api/routes/create", {

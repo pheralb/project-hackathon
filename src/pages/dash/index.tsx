@@ -1,17 +1,24 @@
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
-import type { THackathon } from "@/types/hackathon.type";
+import { useState } from "react";
+import { GetServerSideProps } from "next";
+import { getServerAuthSession } from "@/lib/auth";
+import { api } from "@/trpc/api";
 
-import { Tip } from "@/ui";
+import { Input, Tip } from "@/ui";
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 import HackathonCard from "@/components/hackathonCard";
 import Loading from "@/components/loading";
-import { GetServerSideProps } from "next";
-import { getServerAuthSession } from "@/lib/auth";
 
 const Dashboard = () => {
-  const { data, isLoading } = useSWR("/api/routes/getAll", fetcher);
+  const [filter, setFilter] = useState("");
+  const {
+    data: hackathons,
+    isLoading,
+    error,
+  } = api.hackathon.allHackathons.useQuery({
+    filter,
+  });
+
   return (
     <>
       <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
@@ -21,15 +28,21 @@ const Dashboard = () => {
           <CreateNew />
         </div>
       </div>
+      <Input value={filter} onChange={(e) => setFilter(e.target.value)} />
       {isLoading ? (
         <div className="mt-6">
           <Loading />
         </div>
-      ) : data?.length > 0 ? (
+      ) : hackathons && hackathons?.length > 0 ? (
         <div className="container mx-auto mt-6">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {data.map((hackathon: THackathon) => (
-              <HackathonCard key={hackathon.id} {...hackathon} />
+            {hackathons.map((hackathon) => (
+              <HackathonCard
+                key={hackathon.id}
+                name={hackathon.name}
+                description={hackathon.description || "No description"}
+                url={hackathon.url}
+              />
             ))}
           </div>
         </div>
@@ -37,6 +50,13 @@ const Dashboard = () => {
         <Tip>
           You don&apos;t have any hackathons yet. Create one by clicking the
           button above.
+        </Tip>
+      )}
+      {error && (
+        <Tip>
+          <p className="text-red-500">
+            Error: {error.data?.code} - {error.message}
+          </p>
         </Tip>
       )}
     </>

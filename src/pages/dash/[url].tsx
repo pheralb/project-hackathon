@@ -1,24 +1,25 @@
+import { api } from "@/trpc/api";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
-import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
 
 import { Button, Link } from "@/ui";
 import { ArrowLeft, KeyAltPlus } from "iconoir-react";
 import EditHackathon from "@/components/editHackathon";
-import { THackathon } from "@/types/hackathon.type";
 import Loading from "@/components/loading";
-import { GetServerSideProps } from "next";
 import { getServerAuthSession } from "@/lib/auth";
 
 const DashUrl = () => {
   const router = useRouter();
   const { url } = router.query;
-  const { data, isLoading } = useSWR(
-    `/api/routes/getSingle?url=${url}`,
-    fetcher,
-  );
+
+  const {
+    data: hackathon,
+    isLoading,
+    error,
+  } = api.hackathon.singleHackathon.useQuery({
+    url: url as string,
+  });
 
   return (
     <>
@@ -27,10 +28,10 @@ const DashUrl = () => {
           <Loading />
         </div>
       ) : (
-        data && (
-          <div key={data.hackathon.id}>
+        hackathon && (
+          <div key={hackathon.id}>
             <Head>
-              <title>{data.hackathon.name} - Project Hackathon</title>
+              <title>{hackathon.name} - Project Hackathon</title>
             </Head>
             <div className="mt-16 flex w-full items-center justify-between border-y border-neutral-800 py-4 px-6">
               <div className="flex items-center space-x-4">
@@ -40,11 +41,16 @@ const DashUrl = () => {
                     className="cursor-pointer transition-all hover:-translate-x-0.5"
                   />
                 </Link>
-                <h1 className="text-2xl font-medium">{data.hackathon.name}</h1>
+                <h1 className="text-2xl font-medium">{hackathon.name}</h1>
               </div>
               <div className="flex items-center space-x-3">
                 <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
-                <EditHackathon {...data.hackathon} />
+                <EditHackathon
+                  id={hackathon.id}
+                  name={hackathon.name}
+                  description={hackathon.description || ""}
+                  is_finished={false}
+                />
               </div>
             </div>
             <div className="mt-8 flex flex-col items-center justify-center space-y-2">

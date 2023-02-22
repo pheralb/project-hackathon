@@ -7,7 +7,7 @@ interface LoadingProps {
 
 const Loading = (props: LoadingProps) => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-2">
+    <div className="flex flex-col items-center justify-center space-y-3">
       {props.text || "Loading..."}
       <Ring size={30} color="white" />
     </div>

@@ -6,8 +6,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { SaveFloppyDisk, Settings } from "iconoir-react";
 import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
+import { updateHackathon } from "@/schema";
 
-const EditHackathon = (props: THackathon) => {
+const EditHackathon = (props: updateHackathon) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
 
