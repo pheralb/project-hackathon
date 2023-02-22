@@ -31,7 +31,7 @@ export const nextSeoConfig = {
   ],
   openGraph: {
     site_name: "Project Hackathon",
-    url: "https://phck.netlify.app",
+    url: "https://phck.vercel.app",
     type: "website",
     locale: "en_IE",
     // images: [
