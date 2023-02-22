@@ -25,7 +25,10 @@ const Modal = (props: ModalProps) => {
               {props.title}
             </Dialog.Title>
             <Dialog.Close asChild>
-              <Cancel className="cursor-pointer text-gray-400 transition-all duration-100 hover:text-white" />
+              <Cancel
+                width={25}
+                className="cursor-pointer text-gray-400 transition-all duration-100 hover:text-white"
+              />
             </Dialog.Close>
           </div>
           {props.children}

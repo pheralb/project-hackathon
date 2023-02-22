@@ -19,3 +19,4 @@ const Cancel: FC<ComponentProps<"svg">> = (props) => (
 );
 
 export default Cancel;
+
