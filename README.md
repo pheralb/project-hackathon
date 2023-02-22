@@ -46,8 +46,8 @@
 
 - **[Next.js](https://nextjs.org/)** with [TypeScript](https://www.typescriptlang.org/) - The React Framework for Production.
 - **[Next-Auth](https://next-auth.js.org/)** - Authentication for Next.js.
-- **[Prisma](https://www.prisma.io/)** - Next-generation Node.js and TypeScript ORM.
-- **[CockroachDB](https://www.cockroachlabs.com/)** - The open source, cloud-native distributed SQL database.
+- **[Prisma](https://www.prisma.io/)** with **[CockroachDB](https://www.cockroachlabs.com/)** - Next-generation Node.js and TypeScript ORM.
+- **[tRPC 10](https://trpc.io/)** - End-to-end typesafe API.
 - **[Tailwind CSS](https://tailwindcss.com/)** with [clsx](https://github.com/lukeed/clsx) - A utility-first CSS framework for rapidly building custom designs.
 - **[Radix UI Primitives](https://www.radix-ui.com/)** - Unstyled, accessible components for building high‑quality design systems.
 - **[Framer Motion](https://www.framer.com/motion/)** - A production-ready motion library for React.
@@ -71,8 +71,8 @@
 
 **For the admin:**
 
-- [ ] The admin can add a new hackathon.
-- [ ] The admin can edit a hackathon.
+- [x] The admin can add a new hackathon.
+- [x] The admin can edit a hackathon.
 - [ ] The admin can delete a hackathon.
 - [ ] The admin can share the link to the hackathon.
 - [ ] The admin can see the list of participants.
