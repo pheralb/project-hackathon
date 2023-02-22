@@ -5,7 +5,7 @@ export const hackathonSchema = z.object({
   id: z.string(),
   name: z.string().min(3),
   url: z.string(),
-  description: z.string().email(),
+  description: z.string(),
   is_finished: z.boolean(),
   owner: z.string().min(3),
   creation_date: z.date(),
@@ -19,7 +19,7 @@ export type allHackathons = z.TypeOf<typeof hackathonSchema>;
 export const newHackathonSchema = z.object({
   name: z.string().min(3),
   url: z.string(),
-  description: z.string().email(),
+  description: z.string(),
   is_finished: z.boolean(),
 });
 
