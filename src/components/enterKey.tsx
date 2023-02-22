@@ -5,12 +5,12 @@ const EnterKey = () => {
   return (
     <Modal
       btn={<Button icon={<Send width={18} />}>Send project</Button>}
-      title="Enter hackathon key"
+      title="Send project"
       action={() => alert("Create")}
       actionText="Create"
       description="Create a new hackathon"
     >
-      <p>Modal content</p>
+      
     </Modal>
   );
 };
