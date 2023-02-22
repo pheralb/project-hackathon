@@ -5,6 +5,9 @@ import NextNProgress from "nextjs-progressbar";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
+// tRPC:
+import { api } from "@/trpc/api";
+
 // Styles:
 import "@/styles/globals.css";
 
@@ -40,4 +43,4 @@ const App: AppType<{ session: Session | null }> = ({
   );
 };
 
-export default App;
+export default api.withTRPC(App);
