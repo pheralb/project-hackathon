@@ -1,4 +1,3 @@
-import { allHackathons } from "@/schema";
 import { Link } from "@/ui";
 
 interface hackathonCardProps {

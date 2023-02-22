@@ -8,6 +8,7 @@ import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 import HackathonCard from "@/components/hackathonCard";
 import Loading from "@/components/loading";
+import { Hackathon } from "@prisma/client";
 
 const Dashboard = () => {
   const [filter, setFilter] = useState("");
@@ -36,7 +37,7 @@ const Dashboard = () => {
       ) : hackathons && hackathons?.length > 0 ? (
         <div className="container mx-auto mt-6">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {hackathons.map((hackathon) => (
+            {hackathons.map((hackathon: Hackathon) => (
               <HackathonCard
                 key={hackathon.id}
                 name={hackathon.name}
