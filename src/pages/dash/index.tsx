@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import { getServerAuthSession } from "@/lib/auth";
 import { api } from "@/trpc/api";
 
 import { Input, Tip } from "@/ui";
@@ -64,25 +62,6 @@ const Dashboard = () => {
       </div>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (
-  ctx: GetServerSidePropsContext,
-) => {
-  const session = await getServerAuthSession(ctx);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: { session },
-  };
 };
 
 export default Dashboard;
