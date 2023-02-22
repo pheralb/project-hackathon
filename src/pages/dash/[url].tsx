@@ -1,5 +1,5 @@
 import { api } from "@/trpc/api";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -69,7 +69,9 @@ const DashUrl = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext,
+) => {
   const session = await getServerAuthSession(ctx);
 
   if (!session) {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import { getServerAuthSession } from "@/lib/auth";
 import { api } from "@/trpc/api";
 
@@ -64,7 +64,9 @@ const Dashboard = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (
+  ctx: GetServerSidePropsContext,
+) => {
   const session = await getServerAuthSession(ctx);
 
   if (!session) {
