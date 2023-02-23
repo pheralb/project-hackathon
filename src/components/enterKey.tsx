@@ -1,16 +1,75 @@
 import { Send } from "@/ui/icons";
-import { Modal, Button } from "@/ui";
+import { Modal, Button, Alert } from "@/ui";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { nanoid } from "nanoid";
+
+import { newParticipation } from "@/schema/participation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { api } from "@/trpc/api";
+import { inputStyles } from "@/ui/input";
 
 const EnterKey = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>();
+  let randomWord = nanoid(4);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<newParticipation>();
+
+  const onSubmit: SubmitHandler<newParticipation> = async (data) => {
+    try {
+      setLoading(true);
+
+      const res = await api.hackathon.checkHackathonUrl.useQuery({
+        ...data,
+        url: randomWord,
+      });
+
+      if (res) {
+        router.push(`/app/${randomWord}`);
+      } else {
+        alert("Invalid URL");
+      }
+    } catch (err) {
+      alert(err);
+      setLoading(false);
+    }
+  };
+
   return (
     <Modal
       btn={<Button icon={<Send width={18} />}>Send project</Button>}
       title="Send project"
-      action={() => alert("Create")}
-      actionText="Create"
-      description="Create a new hackathon"
     >
-      
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-6">
+          <label htmlFor="name">URL Key:</label>
+          <input
+            id="key"
+            className={inputStyles}
+            placeholder="xxxxxx"
+            autoComplete="off"
+            disabled={loading}
+            {...register("title", {
+              required: "URL Key is required",
+              maxLength: {
+                value: 6,
+                message: "URL must be less than 6 characters",
+              },
+            })}
+          />
+          {errors.url && <Alert>{errors.url?.message}</Alert>}
+        </div>
+        <div className="flex flex-row-reverse">
+          <Button type="submit" disabled={loading} loadingstatus={loading}>
+            {loading ? "Preparing..." : "Continue"}
+          </Button>
+        </div>
+      </form>
     </Modal>
   );
 };

@@ -8,6 +8,7 @@ import { nanoid } from "nanoid";
 import { Plus } from "@/ui/icons";
 import { Modal, Button, Alert, Tip } from "@/ui";
 import { inputStyles } from "@/ui/input";
+import { toast } from "sonner";
 
 const CreateNew = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const CreateNew = () => {
 
   const { mutate } = api.hackathon.createHackathon.useMutation({
     onSuccess: () => {
-      router.push(`/dash/${url}`);
+      router.push(`/app/${url}`);
       setLoading(false);
     },
     onError: () => {
@@ -38,9 +39,11 @@ const CreateNew = () => {
         url,
         is_finished: false,
       });
+      toast.success("Hackathon created successfully");
     } catch (err) {
       alert(err);
       setLoading(false);
+      toast.error("Something went wrong");
     }
   };
 
@@ -93,7 +96,7 @@ const CreateNew = () => {
         <Tip>You can edit all later in the hackathon settings.</Tip>
         <div className="flex flex-row-reverse">
           <Button type="submit" disabled={loading} loadingstatus={loading}>
-            {loading ? "Creating..." : "Create"}
+            {loading ? "Playing Kukoro..." : "Create"}
           </Button>
         </div>
       </form>

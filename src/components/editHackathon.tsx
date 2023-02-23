@@ -1,17 +1,26 @@
+import { api } from "@/trpc/api";
+import { nanoid } from "nanoid";
 import type { THackathon } from "@/types/hackathon.type";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { updateHackathon } from "@/schema/hackathon";
 
 import { SaveFloppyDisk, Settings } from "@/ui/icons";
 import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
-import { updateHackathon } from "@/schema";
-import { api } from "@/trpc/api";
+import DeleteHackathon from "./deleteHackathon";
+import { toast } from "sonner";
 
-const EditHackathon = (props: updateHackathon) => {
+interface EditHackathonProps extends updateHackathon {
+  key: string;
+}
+
+const EditHackathon = (props: EditHackathonProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
+  const [validateWord, setValidateWord] = useState<boolean>();
+  const randomWord = nanoid(6);
 
   const {
     register,
@@ -37,6 +46,7 @@ const EditHackathon = (props: updateHackathon) => {
         id: props.id,
         is_finished: false,
       });
+      toast.success("Hackathon created successfully");
     } catch (err) {
       alert(err);
       setLoading(false);
@@ -48,7 +58,7 @@ const EditHackathon = (props: updateHackathon) => {
       btn={<Button icon={<Settings width={18} />}>Settings</Button>}
       title="Settings"
     >
-      <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
+      <form className="mb-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-6">
           <label htmlFor="name">Title:</label>
           <input
@@ -86,6 +96,15 @@ const EditHackathon = (props: updateHackathon) => {
           />
           {errors.description && <Alert>{errors.description?.message}</Alert>}
         </div>
+        <div className="mb-6">
+          <label htmlFor="description">Key:</label>
+          <input
+            defaultValue={props.key}
+            className={inputStyles}
+            autoComplete="off"
+            disabled={true}
+          />
+        </div>
         <div className="flex flex-row-reverse">
           <Button
             type="submit"
@@ -93,10 +112,11 @@ const EditHackathon = (props: updateHackathon) => {
             loadingstatus={loading}
             icon={<SaveFloppyDisk width={17} />}
           >
-            {loading ? "Saving..." : "Save"}
+            {loading ? "Playing Kukoro..." : "Save"}
           </Button>
         </div>
       </form>
+      <DeleteHackathon id={props.id} />
     </Modal>
   );
 };
