@@ -12,7 +12,7 @@ const Auth = () => {
     setLoading(true);
     try {
       await signIn(provider, {
-        callbackUrl: `/dash`,
+        callbackUrl: `/app`,
       });
     } catch (error) {
       alert(error);
