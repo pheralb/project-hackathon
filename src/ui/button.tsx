@@ -34,7 +34,7 @@ export const Button = (props: ButtonProps) => {
       <div className="flex items-center justify-center">
         {props.loadingstatus && (
           <div className="mr-3">
-            <Ring size={20} color="white" />
+            <Ring size={20} color="#facc15" />
           </div>
         )}
         {props.icon && !props.loadingstatus && (
@@ -50,7 +50,7 @@ export const ButtonLg = (props: ButtonProps) => {
   return (
     <button
       className={clsx(
-        "w-full rounded-md border border-neutral-800 bg-neutral-800/20 px-6 py-3 font-medium text-white",
+        "w-full rounded-md border border-neutral-800 bg-neutral-800/20 px-6 py-3 font-medium",
         "transition-all duration-200 ease-in-out",
         "hover:bg-neutral-800/60 hover:shadow-md",
         "outline-none focus:outline-none",
@@ -66,7 +66,7 @@ export const ButtonLg = (props: ButtonProps) => {
       <div className="flex flex-col items-center justify-center">
         {props.loadingstatus && (
           <div className="mr-3">
-            <Ring size={20} color="white" />
+            <Ring size={20} color="#facc15" />
           </div>
         )}
         {props.icon && !props.loadingstatus && (

@@ -10,6 +10,7 @@ import { api } from "@/trpc/api";
 
 // Styles:
 import "@/styles/globals.css";
+import { Toaster } from "sonner";
 
 // Layout:
 import Header from "@/layout/header";
@@ -37,6 +38,17 @@ const App: AppType<{ session: Session | null }> = ({
       <main className="font-sans">
         <Header />
         <Component {...pageProps} />
+        <Toaster
+          theme="dark"
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#161616",
+              fontFamily: "Satoshi",
+              fontSize: "15px",
+            },
+          }}
+        />
         <Footer />
       </main>
     </SessionProvider>

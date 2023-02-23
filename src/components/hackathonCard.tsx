@@ -8,7 +8,7 @@ interface hackathonCardProps {
 
 const HackathonCard = (props: hackathonCardProps) => {
   return (
-    <Link href={`/dash/${props.url}`} className="max-w-sm">
+    <Link href={`/app/${props.url}`} className="max-w-sm">
       <div className="cursor-pointer rounded-md border border-neutral-700/40 bg-neutral-800/50 p-4 transition-all duration-100 hover:bg-neutral-800">
         <h3 className="text-xl font-medium">{props.name}</h3>
         {props.description && (
