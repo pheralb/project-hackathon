@@ -1,12 +1,11 @@
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "..";
+import { createTRPCRouter, publicProcedure } from "..";
 
 // Schemas:
 import {
   filterHackathonSchema,
-  hackathonSchema,
   newHackathonSchema,
   updateHackathonSchema,
-} from "@/schema";
+} from "@/schema/hackathon";
 import { z } from "zod";
 
 export const hackathonRouter = createTRPCRouter({
@@ -53,7 +52,7 @@ export const hackathonRouter = createTRPCRouter({
   //------
   // Delete hackathon =>
   deleteHackathon: publicProcedure
-    .input(updateHackathonSchema)
+    .input(z.object({ id: z.string() }))
     .mutation(({ ctx, input }) => {
       const deleteHackathon = ctx.prisma.hackathon.delete({
         where: {
@@ -78,4 +77,15 @@ export const hackathonRouter = createTRPCRouter({
       return data;
     }),
   //------
+  // Check hackathon url =>
+  checkHackathonUrl: publicProcedure
+    .input(z.object({ url: z.string() }))
+    .query(({ ctx, input }) => {
+      const data = ctx.prisma.hackathon.findMany({
+        where: {
+          url: input.url,
+        },
+      });
+      return data;
+    }),
 });
