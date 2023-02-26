@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "..";
 
 // Schemas:
@@ -6,7 +7,6 @@ import {
   newHackathonSchema,
   updateHackathonSchema,
 } from "@/schema/hackathon";
-import { z } from "zod";
 
 export const hackathonRouter = createTRPCRouter({
   //------
@@ -66,7 +66,7 @@ export const hackathonRouter = createTRPCRouter({
   singleHackathon: publicProcedure
     .input(z.object({ url: z.string() }))
     .query(({ ctx, input }) => {
-      const data = ctx.prisma.hackathon.findUnique({
+      const hackathon = ctx.prisma.hackathon.findUnique({
         where: {
           url_creatorId: {
             url: input.url,
@@ -74,7 +74,17 @@ export const hackathonRouter = createTRPCRouter({
           },
         },
       });
-      return data;
+      const participants = ctx.prisma.participation.findMany({
+        where: {
+          hackathonUrl: input.url,
+        },
+      });
+      return Promise.all([hackathon, participants]).then((values) => {
+        return {
+          hackathon: values[0],
+          participants: values[1],
+        };
+      });
     }),
   //------
   // Check hackathon url =>

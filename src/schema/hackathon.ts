@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { participationSchema } from "./participation";
 
 // Get hackathon:
 export const hackathonSchema = z.object({
@@ -9,6 +10,7 @@ export const hackathonSchema = z.object({
   is_finished: z.boolean(),
   owner: z.string().min(3),
   creation_date: z.date(),
+  participants: z.array(participationSchema),
 });
 
 export type allHackathons = z.TypeOf<typeof hackathonSchema>;

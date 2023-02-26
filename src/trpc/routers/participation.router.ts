@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "..";
 
 export const participationRouter = createTRPCRouter({
@@ -11,17 +12,15 @@ export const participationRouter = createTRPCRouter({
     });
   }),
   //------
-  // Create new participation =>
-  // createParticipation: publicProcedure
-  //   .input(newParticipationSchema)
-  //   .mutation(({ ctx, input }) => {
-  //     const newHackathon = ctx.prisma.participation.create({
-  //       data: {
-  //         ...input,
-  //         createdBy: ctx.session?.user?.id,
-  //       },
-  //     });
-  //     return newHackathon;
-  //   }),
+  // Get participation by hackathon_id =>
+  participationByHackathonId: publicProcedure
+    .input(z.object({ hackathonId: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.participation.findMany({
+        where: {
+          hackathonId: input.hackathonId,
+        },
+      });
+    }),
   //------
 });
