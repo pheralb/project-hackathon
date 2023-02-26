@@ -73,10 +73,10 @@
 
 - [x] The admin can add a new hackathon.
 - [x] The admin can edit a hackathon.
-- [ ] The admin can delete a hackathon.
-- [ ] The admin can share the link to the hackathon.
+- [x] The admin can delete a hackathon.
+- [x] The admin can share the link to the hackathon.
 - [ ] The admin can see the list of participants.
-- [ ] The admin can see the list of projects.
+- [x] The admin can see the list of projects.
 - [ ] The user can set a winner (mark a user as a winner).
 - [ ] The user can set a project as 'reviewed'.
 
