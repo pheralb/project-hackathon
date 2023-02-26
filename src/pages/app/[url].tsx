@@ -12,11 +12,7 @@ const DashUrl = () => {
   const router = useRouter();
   const { url } = router.query;
 
-  const {
-    data: hackathon,
-    isLoading,
-    error,
-  } = api.hackathon.singleHackathon.useQuery({
+  const { data, isLoading, error } = api.hackathon.singleHackathon.useQuery({
     url: url as string,
   });
 
@@ -28,14 +24,14 @@ const DashUrl = () => {
     );
   }
 
-  if (error || !hackathon) {
+  if (error || !data) {
     return router.push("/404");
   }
 
   return (
     <>
       <Head>
-        <title>{hackathon.name} - Project Hackathon</title>
+        <title>{data.hackathon?.name} - Project Hackathon</title>
       </Head>
       <div className="mt-16 flex w-full items-center justify-between border-b border-neutral-800 py-4 px-6">
         <div className="flex items-center space-x-4">
@@ -45,22 +41,32 @@ const DashUrl = () => {
               className="cursor-pointer transition-all hover:-translate-x-0.5"
             />
           </Link>
-          <h1 className="text-2xl font-medium">{hackathon.name}</h1>
+          <h1 className="text-2xl font-medium">{data.hackathon?.name}</h1>
         </div>
         <div className="flex items-center space-x-3">
           <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
           <EditHackathon
-            id={hackathon.id}
-            key={hackathon.url}
-            name={hackathon.name}
-            description={hackathon.description || ""}
+            id={data.hackathon?.id || ""}
+            key={data.hackathon?.url || ""}
+            name={data.hackathon?.name || ""}
+            description={data.hackathon?.description || ""}
             is_finished={false}
           />
         </div>
       </div>
-      <div className="mt-8 flex flex-col items-center justify-center space-y-3">
-        <Prepare url={hackathon.url} />
-      </div>
+      {data.participants && data.participants?.length > 0 ? (
+        <div className="mt-8 flex flex-col items-center justify-center space-y-3">
+          {data.participants.map((participant) => (
+            <div key={participant.id}>
+              <p>{participant.creatorId}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-8 flex flex-col items-center justify-center space-y-3">
+          <Prepare url={data.hackathon?.url || ""} />
+        </div>
+      )}
     </>
   );
 };

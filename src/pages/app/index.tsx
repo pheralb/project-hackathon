@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { api } from "@/trpc/api";
+import type { Hackathon } from "@prisma/client";
 
 import { Input, Tip } from "@/ui";
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 import HackathonCard from "@/components/hackathonCard";
 import Loading from "@/components/loading";
-import { Hackathon } from "@prisma/client";
 
 const Dashboard = () => {
   const [filter, setFilter] = useState("");
