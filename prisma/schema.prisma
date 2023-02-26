@@ -22,12 +22,13 @@ model Widget {
 model Hackathon {
     id             String          @id @default(cuid())
     name           String
-    url            String
+    url            String          @unique
     description    String?
     owner          User?           @relation(fields: [creatorId], references: [id])
     creatorId      String
     updatedAt      DateTime        @default(now()) @updatedAt
     is_finished    Boolean         @default(false)
+    verified       Boolean         @default(false)
     participations Participation[]
 
     @@unique([url, creatorId])
@@ -42,13 +43,14 @@ model Participation {
     description  String
     url          String
     team         String[]   @default([])
-    hackathon_id Hackathon? @relation(fields: [id], references: [id])
     createdBy    User?      @relation(fields: [creatorId], references: [id])
     creatorId    String
     createdAt    DateTime   @default(now())
     updatedAt    DateTime   @updatedAt
+    Hackathon    Hackathon? @relation(fields: [hackathonUrl], references: [url])
+    hackathonUrl String
 
-    @@unique([url, creatorId])
+    @@unique([url, creatorId, hackathonUrl])
     @@map(name: "participations")
 }
 
