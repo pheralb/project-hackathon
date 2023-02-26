@@ -14,11 +14,11 @@ export const participationRouter = createTRPCRouter({
   //------
   // Get participation by hackathon_id =>
   participationByHackathonId: publicProcedure
-    .input(z.object({ hackathonId: z.string() }))
+    .input(z.object({ hackathonUrl: z.string() }))
     .query(({ ctx, input }) => {
       return ctx.prisma.participation.findMany({
         where: {
-          hackathonId: input.hackathonId,
+          hackathonUrl: input.hackathonUrl,
         },
       });
     }),

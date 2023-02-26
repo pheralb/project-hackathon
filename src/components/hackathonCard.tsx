@@ -4,7 +4,6 @@ interface hackathonCardProps {
   name: string;
   description: string;
   url: string;
-  participants: number;
 }
 
 const HackathonCard = (props: hackathonCardProps) => {
@@ -17,8 +16,6 @@ const HackathonCard = (props: hackathonCardProps) => {
         )}
         <div className="mt-4 flex items-center space-x-2 text-gray-400">
           <p className="font-mono">{props.url}</p>
-          <span className="text-gray-400">-</span>
-          <p>{props.participants} participants</p>
         </div>
       </div>
     </Link>
