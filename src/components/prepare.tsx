@@ -1,4 +1,5 @@
 import React from "react";
+import Copy from "./copy";
 
 interface PrepareProps {
   url: string;
@@ -13,25 +14,27 @@ const Prepare = (props: PrepareProps) => {
         <h1 className="text-2xl">🎉 Your hackathon is ready!</h1>
         <div>
           <h1 className="text-xl font-medium">1. Share your hackathon:</h1>
-          <div className="ml-1 border-l border-neutral-800 p-3 text-neutral-400">
+          <div className="ml-1 border-l border-neutral-800 p-4 text-neutral-400">
+            <p>Share your hackathon by sending them the link below:</p>
+            <Copy url={`https://phck.vercel.app/send/${props.url}`} />
             <p>
-              Share your hackathon with your friends by sending them the link
-              below:
+              Users will have to log in to Project Hackathon beforehand to
+              submit the project.
             </p>
-            <div className="flex items-center space-x-2">
-              <p>https://phck.vercel.app/send/{props.url}</p>
-              <p className="font-medium text-neutral-400"></p>
-            </div>
           </div>
         </div>
         <div>
           <h1 className="text-xl font-medium">
-            2. You will see all the projects here:
+            2. You will see all projects here:
           </h1>
-          <p className="text-neutral-400">
-            After your friends submit their projects, you will see them here.
-          </p>
+          <div className="ml-1 border-l border-neutral-800 p-4 text-neutral-400">
+            <p>
+              Here you can see all the projects that have been submitted, vote
+              for the winner and delete projects.
+            </p>
+          </div>
         </div>
+        <p>🚀🚀</p>
       </div>
     </div>
   );
