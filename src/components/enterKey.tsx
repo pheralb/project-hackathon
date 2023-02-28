@@ -62,7 +62,7 @@ const EnterKey = () => {
               },
             })}
           />
-          {errors.url && <Alert>{errors.url?.message}</Alert>}
+          {errors.project_url && <Alert>{errors.project_url?.message}</Alert>}
         </div>
         <div className="flex flex-row-reverse">
           <Button type="submit" disabled={loading} loadingstatus={loading}>
