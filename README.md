@@ -65,7 +65,7 @@
 
 **For the participant:**
 
-- [ ] The user can add his project.
+- [x] The user can add his project.
 - [ ] The user can edit his project before a deadline.
 - [ ] When the deadline is reached, the user can only see the project.
 
@@ -75,7 +75,6 @@
 - [x] The admin can edit a hackathon.
 - [x] The admin can delete a hackathon.
 - [x] The admin can share the link to the hackathon.
-- [ ] The admin can see the list of participants.
 - [x] The admin can see the list of projects.
 - [ ] The user can set a winner (mark a user as a winner).
 - [ ] The user can set a project as 'reviewed'.
