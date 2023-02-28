@@ -12,9 +12,10 @@ const DashUrl = () => {
   const router = useRouter();
   const { url } = router.query;
 
-  const { data, isLoading, error } = api.hackathon.singleHackathon.useQuery({
-    url: url as string,
-  });
+  const { data, isLoading, error } =
+    api.hackathon.singleHackathonWithParticipants.useQuery({
+      url: url as string,
+    });
 
   if (isLoading) {
     return (
