@@ -38,7 +38,7 @@ const DeleteHackathon = (props: DeleteHackathonProps) => {
           id: id,
         });
       } catch (err) {
-        alert(err);
+        toast.error("Something went wrong");
         setLoading(false);
       }
     } else {

@@ -45,7 +45,6 @@ const SendProject = (hackathonProps: iSendProject) => {
       });
       toast.success("Your project has been successfully submitted");
     } catch (err) {
-      alert(err);
       setLoading(false);
       toast.error("Something went wrong");
     }

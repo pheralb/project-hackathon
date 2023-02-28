@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 
 import { Button, Link } from "@/ui";
-import Image from "next/image";
+import { toast } from "sonner";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -12,7 +13,7 @@ const Header = () => {
         callbackUrl: "/",
       });
     } catch (error) {
-      alert(error);
+      toast.error("Something went wrong");
     }
   };
 
@@ -32,7 +33,13 @@ const Header = () => {
         </Link>
         {session && (
           <div className="flex items-center space-x-3">
-            <img src={session.user.image} className="h-6 w-6 rounded-full" />
+            <Image
+              src={session.user.image}
+              width={24}
+              height={24}
+              className="rounded-full"
+              alt={session.user.name}
+            />
             <p>{session.user.name}</p>
             <span className="text-gray-400">|</span>
             <Button onClick={handleLogout}>Sign out</Button>

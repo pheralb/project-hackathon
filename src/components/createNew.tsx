@@ -41,7 +41,6 @@ const CreateNew = () => {
       });
       toast.success("Hackathon created successfully");
     } catch (err) {
-      alert(err);
       setLoading(false);
       toast.error("Something went wrong");
     }

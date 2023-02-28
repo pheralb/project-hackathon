@@ -8,6 +8,7 @@ import { newParticipation } from "@/schema/participation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { api } from "@/trpc/api";
 import { inputStyles } from "@/ui/input";
+import { toast } from "sonner";
 
 const EnterKey = () => {
   const router = useRouter();
@@ -32,10 +33,10 @@ const EnterKey = () => {
       if (res) {
         router.push(`/app/${randomWord}`);
       } else {
-        alert("Invalid URL");
+        toast.error("Invalid URL");
       }
     } catch (err) {
-      alert(err);
+      toast.error("Something went wrong");
       setLoading(false);
     }
   };

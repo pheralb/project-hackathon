@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 
 import { Button } from "@/ui";
 import { Github } from "@/ui/icons";
+import { toast } from "sonner";
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ const Auth = () => {
         callbackUrl: `/app`,
       });
     } catch (error) {
-      alert(error);
+      toast.error("Unable to log in. Please try again later.");
       setLoading(false);
     }
   };

@@ -48,7 +48,7 @@ const EditHackathon = (props: EditHackathonProps) => {
       });
       toast.success("Hackathon created successfully");
     } catch (err) {
-      alert(err);
+      toast.error("Something went wrong");
       setLoading(false);
     }
   };
