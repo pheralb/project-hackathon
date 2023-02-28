@@ -11,7 +11,6 @@ export const participationSchema = z.object({
   title: z.string(),
   description: z.string(),
   url: z.string(),
-  team: z.string(),
 });
 
 export type participation = z.TypeOf<typeof participationSchema>;
@@ -21,11 +20,10 @@ export type participation = z.TypeOf<typeof participationSchema>;
 // Create new participation:
 
 export const newParticipationSchema = z.object({
-  hackathonId: z.string(),
   title: z.string(),
   description: z.string(),
-  url: z.string(),
-  team: z.string(),
+  hackathon_url: z.string(),
+  project_url: z.string(),
 });
 
 export type newParticipation = z.TypeOf<typeof newParticipationSchema>;

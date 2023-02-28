@@ -62,8 +62,8 @@ export const hackathonRouter = createTRPCRouter({
       return deleteHackathon;
     }),
   //------
-  // Single hackathon =>
-  singleHackathon: publicProcedure
+  // Single hackathon with participants =>
+  singleHackathonWithParticipants: publicProcedure
     .input(z.object({ url: z.string() }))
     .query(({ ctx, input }) => {
       const hackathon = ctx.prisma.hackathon.findUnique({
@@ -76,7 +76,7 @@ export const hackathonRouter = createTRPCRouter({
       });
       const participants = ctx.prisma.participation.findMany({
         where: {
-          hackathonUrl: input.url,
+          hackathon_url: input.url,
         },
       });
       return Promise.all([hackathon, participants]).then((values) => {
@@ -85,6 +85,21 @@ export const hackathonRouter = createTRPCRouter({
           participants: values[1],
         };
       });
+    }),
+  //------
+  // Single hackathon with participants =>
+  singleHackathon: publicProcedure
+    .input(z.object({ url: z.string() }))
+    .query(({ ctx, input }) => {
+      const hackathon = ctx.prisma.hackathon.findUnique({
+        where: {
+          url_creatorId: {
+            url: input.url,
+            creatorId: ctx.session?.user?.id,
+          },
+        },
+      });
+      return hackathon;
     }),
   //------
   // Check hackathon url =>
@@ -98,4 +113,5 @@ export const hackathonRouter = createTRPCRouter({
       });
       return data;
     }),
+  //------
 });

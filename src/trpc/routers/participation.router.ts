@@ -1,3 +1,7 @@
+import {
+  newParticipationSchema,
+  participationSchema,
+} from "@/schema/participation";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "..";
 
@@ -18,7 +22,19 @@ export const participationRouter = createTRPCRouter({
     .query(({ ctx, input }) => {
       return ctx.prisma.participation.findMany({
         where: {
-          hackathonUrl: input.hackathonUrl,
+          hackathon_url: input.hackathonUrl,
+        },
+      });
+    }),
+  //------
+  // Create participation =>
+  createParticipation: publicProcedure
+    .input(newParticipationSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.participation.create({
+        data: {
+          ...input,
+          creatorId: ctx.session?.user?.id,
         },
       });
     }),
