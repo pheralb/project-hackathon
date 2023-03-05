@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         sans: ["Satoshi", "sans-serif"],
       },
+      borderRadius: {
+        "border-inherit": "inherit",
+      },
       colors: {
         midnight: "#161616",
       },
