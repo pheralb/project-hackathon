@@ -65,6 +65,7 @@ const DeleteHackathon = (props: DeleteHackathonProps) => {
         <Button
           onClick={() => deleteHackathonHandler(props.id, validateInput)}
           loadingstatus={loading}
+          disabled={loading}
         >
           Delete
         </Button>

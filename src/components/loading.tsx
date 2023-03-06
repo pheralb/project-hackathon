@@ -1,4 +1,4 @@
-import { Ring } from "@uiball/loaders";
+import { RaceBy, Ring } from "@uiball/loaders";
 
 interface LoadingProps {
   text?: string;
@@ -6,9 +6,11 @@ interface LoadingProps {
 
 const Loading = (props: LoadingProps) => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-5">
-      {props.text || "Loading..."}
-      <Ring size={30} color="#22c55e" />
+    <div className="flex flex-col items-center justify-center space-y-2">
+      <span>{props.text || "Loading..."}</span>
+      <div>
+        <Ring size={25} color="#22c55e" />
+      </div>
     </div>
   );
 };
