@@ -19,10 +19,10 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
   }
 
   return (
-    <Link href={`/app/${url}`} className="flex flex-col items-center">
+    <Link href={`/app/${url}`} className="flex max-w-sm flex-col items-center">
       <div
         onMouseMove={handleMouseMove}
-        className={`${styles.card} group relative
+        className={`${styles.card} group relative h-full w-full
         cursor-pointer rounded-xl
         bg-white bg-opacity-10 before:absolute
         before:top-0 before:left-0
@@ -40,11 +40,13 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
         group-hover:opacity-100`}
         />
         <div
-          className="relative z-[2] m-[1px]
-        h-[calc(100%-2px)] w-[calc(100%-2px)] rounded-border-inherit bg-midnight p-4"
+          className="relative z-[2] m-[1px] flex h-[calc(100%-2px)]
+        w-[calc(100%-2px)] flex-col rounded-border-inherit bg-midnight p-4"
         >
           <h3 className="text-xl font-medium">{name}</h3>
-          {description && <p className="mt-1 text-gray-400">{description}</p>}
+          {description && (
+            <p className="mt-1 flex-1 text-gray-400">{description}</p>
+          )}
           <div className="mt-4 flex items-center space-x-2 text-gray-400">
             <p className="font-mono">{url}</p>
           </div>
