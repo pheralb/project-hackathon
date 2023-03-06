@@ -58,10 +58,9 @@
 
 ## ✨ Features
 
-**Global:**
+**General:**
 
 - [x] Authentication with Github.
-- [ ] Authentication with Google.
 
 **For the participant:**
 
@@ -76,8 +75,8 @@
 - [x] The admin can delete a hackathon.
 - [x] The admin can share the link to the hackathon.
 - [x] The admin can see the list of projects.
-- [ ] The user can set a winner (mark a user as a winner).
-- [ ] The user can set a project as 'reviewed'.
+- [x] The user can set a winner (mark a user as a winner).
+- [x] The user can set a project as 'reviewed'.
 
 ## 🚀 Getting Started
 
