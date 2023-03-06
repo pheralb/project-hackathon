@@ -45,6 +45,7 @@ model Participation {
     hackathon_url String     @unique
     createdBy     User?      @relation(fields: [creatorId], references: [id])
     creatorId     String
+    creatorName   String
     createdAt     DateTime   @default(now())
     updatedAt     DateTime   @updatedAt
     hackathon     Hackathon? @relation(fields: [hackathon_url], references: [url], onDelete: Cascade)
