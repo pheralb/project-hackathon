@@ -11,6 +11,7 @@ import { api } from "@/trpc/api";
 // Styles:
 import "@/styles/globals.css";
 import { Toaster } from "sonner";
+import Show from "@/animations/show";
 
 // Layout:
 import Header from "@/layout/header";
@@ -23,6 +24,7 @@ import { nextSeoConfig } from "next-seo.config";
 const App: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
+  router,
 }) => {
   return (
     <SessionProvider session={session}>
@@ -37,7 +39,9 @@ const App: AppType<{ session: Session | null }> = ({
       />
       <main className="font-sans">
         <Header />
-        <Component {...pageProps} />
+        <Show routerKey={router.route}>
+          <Component {...pageProps} />
+        </Show>
         <Toaster
           theme="dark"
           position="bottom-center"
