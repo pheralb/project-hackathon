@@ -1,9 +1,9 @@
-import { FrameSimple } from "@/ui/icons";
 import { ExternalLink } from "@/ui";
+import { FrameSimple } from "@/ui/icons";
 
 const Footer = () => {
   return (
-    <div className="fixed bottom-0 w-full bg-neutral-900/80 py-3 px-5 font-medium text-gray-400">
+    <footer className="fixed bottom-0 w-full bg-neutral-900/80 py-3 px-5 font-medium text-gray-400">
       <div className="flex items-center justify-between">
         <p>v0.1.0</p>
         <div className="flex items-center space-x-1">
@@ -18,7 +18,7 @@ const Footer = () => {
           </ExternalLink>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
