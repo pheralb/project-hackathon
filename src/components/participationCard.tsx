@@ -50,10 +50,10 @@ const ParticipationCard = (props: participation) => {
         <span className="font-mono font-bold text-gray-500">
           {props.creatorName}
         </span>
-        <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+        <p className="mt-3 mb-6 font-light text-gray-500 dark:text-gray-400">
           {props.description}
         </p>
-        <div className="flex w-full items-center space-x-2 overflow-x-auto border-t border-neutral-800 p-2 pt-3">
+        <div className="flex w-full items-center justify-end space-x-2 overflow-x-auto">
           <Button
             icon={<Check width={15} />}
             onClick={handleWinner}

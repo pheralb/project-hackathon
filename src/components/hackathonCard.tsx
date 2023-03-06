@@ -19,11 +19,11 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
   }
 
   return (
-    <Link href={`/app/${url}`} className="flex max-w-sm flex-col items-center">
+    <Link href={`/app/${url}`} className="flex flex-col items-center">
       <div
         onMouseMove={handleMouseMove}
         className={`${styles.card} group relative
-        max-w-sm cursor-pointer rounded-xl
+        cursor-pointer rounded-xl
         bg-white bg-opacity-10 before:absolute
         before:top-0 before:left-0
         before:h-full before:w-full
