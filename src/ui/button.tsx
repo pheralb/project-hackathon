@@ -13,16 +13,20 @@ export interface ButtonProps
   wFull?: boolean;
 }
 
+export const ButtonStyles = clsx(
+  "rounded-md border border-neutral-800 bg-neutral-800/20 px-4 py-2 font-medium text-white",
+  "transition-all duration-200 ease-in-out",
+  "hover:bg-neutral-800/60 hover:shadow-md",
+  "outline-none focus:outline-none",
+  "focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-50",
+);
+
 export const Button = (props: ButtonProps) => {
   return (
     <button
       type={props.type}
       className={clsx(
-        "rounded-md border border-neutral-800 bg-neutral-800/20 px-4 py-2 font-medium text-white",
-        "transition-all duration-200 ease-in-out",
-        "hover:bg-neutral-800/60 hover:shadow-md",
-        "outline-none focus:outline-none",
-        "focus:ring-2 focus:ring-neutral-700 focus:ring-opacity-50",
+        ButtonStyles,
         props.loadingstatus && "cursor-wait opacity-50",
         props.disabled && "cursor-not-allowed opacity-50",
         props.wFull && "w-full",

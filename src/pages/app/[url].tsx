@@ -7,6 +7,7 @@ import { ArrowLeft, KeyAltPlus } from "@/ui/icons";
 import EditHackathon from "@/components/editHackathon";
 import Loading from "@/components/loading";
 import Prepare from "@/components/prepare";
+import ParticipationCard from "@/components/participationCard";
 
 const DashUrl = () => {
   const router = useRouter();
@@ -28,6 +29,8 @@ const DashUrl = () => {
   if (error || !data) {
     return router.push("/404");
   }
+
+  console.log(data);
 
   return (
     <>
@@ -56,12 +59,13 @@ const DashUrl = () => {
         </div>
       </div>
       {data.participants && data.participants?.length > 0 ? (
-        <div className="mt-8 flex flex-col items-center justify-center space-y-3">
-          {data.participants.map((participant) => (
-            <div key={participant.id}>
-              <p>{participant.creatorId}</p>
-            </div>
-          ))}
+        <div className="container mx-auto mt-8 px-6">
+          <p className="mb-3">{data.participants.length} participants</p>
+          <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
+            {data.participants.map((participant) => (
+              <ParticipationCard key={participant.id} {...participant} />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="mt-8 flex flex-col items-center justify-center space-y-3">
