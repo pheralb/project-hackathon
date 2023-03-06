@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
+import Up from "@/animations/up";
 import { Button, Link } from "@/ui";
 import { toast } from "sonner";
-import Up from "@/animations/up";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 z-50 w-full bg-neutral-900/80 py-4 px-5 font-medium text-gray-200 md:py-3">
+    <header className="fixed top-0 z-50 w-full bg-neutral-900/80 py-4 px-5 font-medium text-gray-200 md:py-3">
       <div className="flex items-center justify-between">
         <Link href="/" underline={false}>
           <div className="flex items-center space-x-3 transition-all duration-100 hover:text-white">
@@ -55,7 +55,7 @@ const Header = () => {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 

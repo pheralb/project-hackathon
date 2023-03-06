@@ -1,12 +1,12 @@
-import { useState } from "react";
 import { api } from "@/trpc/api";
 import type { Hackathon } from "@prisma/client";
+import { useState } from "react";
 
-import { Input, Tip } from "@/ui";
 import CreateNew from "@/components/createNew";
 import EnterKey from "@/components/enterKey";
 import HackathonCard from "@/components/hackathonCard";
 import Loading from "@/components/loading";
+import { Input, Tip } from "@/ui";
 
 const Dashboard = () => {
   const [filter, setFilter] = useState("");
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="mt-16 flex w-full items-center justify-between border-b border-neutral-800 py-4 px-6">
+      <div className="mt-16 flex w-full flex-wrap items-center justify-between gap-2 border-b border-neutral-800 py-4 px-6 sm:flex-nowrap sm:gap-0">
         <h1 className="text-2xl font-medium">Dashboard</h1>
         <div className="flex items-center space-x-2">
           <EnterKey />
