@@ -3,6 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 
 import { Button, Link } from "@/ui";
 import { toast } from "sonner";
+import Up from "@/animations/up";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -33,16 +34,24 @@ const Header = () => {
         </Link>
         {session && (
           <div className="flex items-center space-x-3">
-            <Image
-              src={session.user.image}
-              width={24}
-              height={24}
-              className="rounded-full"
-              alt={session.user.name}
-            />
-            <p className="hidden md:block">{session.user.name}</p>
-            <span className="text-gray-400">|</span>
-            <Button onClick={handleLogout}>Sign out</Button>
+            <Up>
+              <div className="flex items-center space-x-3">
+                <Image
+                  src={session.user.image}
+                  width={24}
+                  height={24}
+                  className="rounded-full"
+                  alt={session.user.name}
+                />
+                <p className="hidden md:block">{session.user.name}</p>
+              </div>
+            </Up>
+            <Up delay={0.2}>
+              <div className="flex items-center space-x-3">
+                <span className="text-gray-400">|</span>
+                <Button onClick={handleLogout}>Sign out</Button>
+              </div>
+            </Up>
           </div>
         )}
       </div>
