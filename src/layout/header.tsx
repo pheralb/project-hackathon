@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed top-0 w-full py-3 px-5 font-medium text-gray-200">
+    <div className="fixed top-0 z-50 w-full bg-neutral-900/80 py-4 px-5 font-medium text-gray-200 md:py-3">
       <div className="flex items-center justify-between">
         <Link href="/" underline={false}>
           <div className="flex items-center space-x-3 transition-all duration-100 hover:text-white">
@@ -28,7 +28,7 @@ const Header = () => {
               height={40}
               alt="Project Hackathon Logo"
             />
-            <p>Project Hackathon</p>
+            <p className="hidden md:block">Project Hackathon</p>
           </div>
         </Link>
         {session && (
@@ -40,7 +40,7 @@ const Header = () => {
               className="rounded-full"
               alt={session.user.name}
             />
-            <p>{session.user.name}</p>
+            <p className="hidden md:block">{session.user.name}</p>
             <span className="text-gray-400">|</span>
             <Button onClick={handleLogout}>Sign out</Button>
           </div>

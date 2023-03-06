@@ -30,14 +30,12 @@ const DashUrl = () => {
     return router.push("/404");
   }
 
-  console.log(data);
-
   return (
     <>
       <Head>
         <title>{data.hackathon?.name} - Project Hackathon</title>
       </Head>
-      <div className="mt-16 flex w-full items-center justify-between border-b border-neutral-800 py-4 px-6">
+      <div className="mt-16 flex w-full flex-col justify-between space-y-3 border-b border-neutral-800 py-4 px-6 md:flex-row md:items-center md:space-y-0">
         <div className="flex items-center space-x-4">
           <Link href="/app">
             <ArrowLeft
@@ -45,7 +43,9 @@ const DashUrl = () => {
               className="cursor-pointer transition-all hover:-translate-x-0.5"
             />
           </Link>
-          <h1 className="text-2xl font-medium">{data.hackathon?.name}</h1>
+          <h1 className="text-xl font-medium md:text-2xl">
+            {data.hackathon?.name}
+          </h1>
         </div>
         <div className="flex items-center space-x-3">
           <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
@@ -61,7 +61,7 @@ const DashUrl = () => {
       {data.participants && data.participants?.length > 0 ? (
         <div className="container mx-auto mt-8 px-6">
           <p className="mb-3">{data.participants.length} participants</p>
-          <div className="mb-6 grid gap-8 md:grid-cols-2 lg:mb-16">
+          <div className="mb-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mb-16">
             {data.participants.map((participant) => (
               <ParticipationCard key={participant.id} {...participant} />
             ))}

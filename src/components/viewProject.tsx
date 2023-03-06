@@ -9,7 +9,7 @@ interface ViewProjectProps {
 const ViewProject = (props: ViewProjectProps) => {
   return (
     <Modal
-      btn={<Button icon={<FrameSimple width={14} />}>View Project</Button>}
+      btn={<Button icon={<FrameSimple width={14} />}>View</Button>}
       title="Warning"
     >
       <div className="flex flex-col items-center justify-center space-y-4">

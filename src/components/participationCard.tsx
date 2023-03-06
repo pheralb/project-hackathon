@@ -44,7 +44,7 @@ const ParticipationCard = (props: participation) => {
   return (
     <div className="flex items-center rounded-lg bg-neutral-800/40 shadow">
       <div className="w-full p-5">
-        <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h3 className="text-md font-bold tracking-tight text-gray-900 dark:text-white md:text-xl">
           {props.title}
         </h3>
         <span className="font-mono font-bold text-gray-500">
@@ -53,20 +53,20 @@ const ParticipationCard = (props: participation) => {
         <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
           {props.description}
         </p>
-        <div className="flex w-full items-center space-x-2 border-t border-neutral-800 pt-3">
+        <div className="flex w-full items-center space-x-2 overflow-x-auto border-t border-neutral-800 p-2 pt-3">
           <Button
             icon={<Check width={15} />}
             onClick={handleWinner}
             disabled={props.is_winner || winner}
           >
-            {props.is_winner || winner ? "Is winner 🎉" : "Winner"}
+            {props.is_winner || winner ? "Winner" : "Winner"}
           </Button>
           <Button
             icon={<Check width={15} />}
             onClick={handleReviewed}
             disabled={props.is_reviewed || reviewed}
           >
-            {props.is_reviewed || reviewed ? "Is reviewed 🔎" : "Reviewed"}
+            {props.is_reviewed || reviewed ? "Reviewed" : "Review"}
           </Button>
           <ViewProject project_url={props.project_url} />
         </div>
