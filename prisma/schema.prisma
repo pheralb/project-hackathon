@@ -42,7 +42,7 @@ model Participation {
     title         String
     description   String
     project_url   String
-    hackathon_url String     @unique
+    hackathon_url String
     createdBy     User?      @relation(fields: [creatorId], references: [id])
     creatorId     String
     creatorName   String
