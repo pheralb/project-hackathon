@@ -26,7 +26,7 @@ const DashUrl = () => {
     );
   }
 
-  if (error || !data) {
+  if (error || !data || !data.hackathon) {
     return router.push("/404");
   }
 

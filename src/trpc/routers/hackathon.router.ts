@@ -87,31 +87,15 @@ export const hackathonRouter = createTRPCRouter({
       });
     }),
   //------
-  // Single hackathon with participants =>
+  // Get a single hackathon by URL without creatorid =>
   singleHackathon: publicProcedure
     .input(z.object({ url: z.string() }))
     .query(({ ctx, input }) => {
       const hackathon = ctx.prisma.hackathon.findUnique({
         where: {
-          url_creatorId: {
-            url: input.url,
-            creatorId: ctx.session?.user?.id,
-          },
+          url: input.url,
         },
       });
       return hackathon;
     }),
-  //------
-  // Check hackathon url =>
-  checkHackathonUrl: publicProcedure
-    .input(z.object({ url: z.string() }))
-    .query(({ ctx, input }) => {
-      const data = ctx.prisma.hackathon.findMany({
-        where: {
-          url: input.url,
-        },
-      });
-      return data;
-    }),
-  //------
 });
