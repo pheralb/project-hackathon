@@ -29,6 +29,7 @@
     "@trpc/react-query": "10.12.0",
     "@trpc/server": "10.12.0",
     "@uiball/loaders": "1.2.6",
+    "canvas-confetti": "1.6.0",
     "clsx": "1.2.1",
     "framer-motion": "9.0.2",
     "nanoid": "4.0.1",
@@ -44,6 +45,7 @@
     "zod": "3.20.6"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "1.6.0",
     "@types/node": "18.13.0",
     "@types/prettier": "2.7.2",
     "@types/react": "18.0.28",

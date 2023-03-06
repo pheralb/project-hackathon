@@ -7,6 +7,7 @@ import type { TParticipation } from "@/types/participation.type";
 
 import { inputStyles } from "@/ui/input";
 import { Button } from "@/ui";
+import confetti from "canvas-confetti";
 
 interface iSendProject {
   id: string;
@@ -28,6 +29,11 @@ const SendProject = (hackathonProps: iSendProject) => {
     onSuccess: () => {
       router.push(`/app/${hackathonProps.url}`);
       setLoading(false);
+      confetti({
+        particleCount: 100,
+        startVelocity: 30,
+        spread: 100,
+      });
     },
     onError: () => {
       setLoading(false);

@@ -9,6 +9,7 @@ import { Plus } from "@/ui/icons";
 import { Modal, Button, Alert, Tip } from "@/ui";
 import { inputStyles } from "@/ui/input";
 import { toast } from "sonner";
+import confetti from "canvas-confetti";
 
 const CreateNew = () => {
   const router = useRouter();
@@ -25,6 +26,9 @@ const CreateNew = () => {
     onSuccess: () => {
       router.push(`/app/${url}`);
       setLoading(false);
+      confetti({
+        spread: 100,
+      });
     },
     onError: () => {
       setLoading(false);
