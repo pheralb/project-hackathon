@@ -1,6 +1,7 @@
 import {
   newParticipationSchema,
   participationSchema,
+  updateParticipationSchema,
 } from "@/schema/participation";
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "..";
@@ -35,6 +36,21 @@ export const participationRouter = createTRPCRouter({
         data: {
           ...input,
           creatorId: ctx.session?.user?.id,
+          creatorName: ctx.session?.user?.name,
+        },
+      });
+    }),
+  //------
+  // Update participation =>
+  updateParticipation: publicProcedure
+    .input(updateParticipationSchema)
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.participation.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          ...input,
         },
       });
     }),

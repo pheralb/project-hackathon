@@ -10,7 +10,9 @@ export const participationSchema = z.object({
   is_winner: z.boolean(),
   title: z.string(),
   description: z.string(),
-  url: z.string(),
+  hackathon_url: z.string(),
+  project_url: z.string(),
+  creatorName: z.string(),
 });
 
 export type participation = z.TypeOf<typeof participationSchema>;
@@ -27,5 +29,17 @@ export const newParticipationSchema = z.object({
 });
 
 export type newParticipation = z.TypeOf<typeof newParticipationSchema>;
+
+// -----------------------------------------------
+
+// Update participation:
+
+export const updateParticipationSchema = z.object({
+  id: z.string(),
+  is_reviewed: z.boolean(),
+  is_winner: z.boolean(),
+});
+
+export type updateParticipation = z.TypeOf<typeof updateParticipationSchema>;
 
 // -----------------------------------------------
