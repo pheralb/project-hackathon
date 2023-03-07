@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="24" cy="24" r="23" fill="#D9D9D9"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M46 24C46 11.8497 36.1503 2 24 2C11.8497 2 2 11.8497 2 24C2 36.1503 11.8497 46 24 46V29C24 26.2386 26.2386 24 29 24H46Z" fill="url(#paint0_angular_1_2)"/>
+<defs>
+<radialGradient id="paint0_angular_1_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(24 24) rotate(90) scale(22)">
+<stop stop-color="#202020"/>
+<stop offset="1" stop-color="#202020" stop-opacity="0.9"/>
+</radialGradient>
+</defs>
+</svg>

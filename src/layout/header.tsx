@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-neutral-900/80 py-4 px-5 font-medium text-gray-200 md:py-3">
+    <header className="block w-full bg-neutral-900/80 py-4 px-5 font-medium text-gray-200 md:fixed md:top-0 md:z-50 md:py-3">
       <div className="flex items-center justify-between">
         <Link href="/" underline={false}>
           <div className="flex items-center space-x-3 transition-all duration-100 hover:text-white">
