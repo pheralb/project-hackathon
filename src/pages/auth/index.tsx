@@ -25,7 +25,7 @@ const Auth = () => {
   return (
     <>
       <Head>
-        <title>Auth</title>
+        <title>Auth - Project Hackathon</title>
       </Head>
       <div className="flex h-screen flex-col items-center justify-center">
         <Up>

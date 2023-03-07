@@ -1,11 +1,8 @@
-import { useState } from "react";
+import Head from "next/head";
 import { api } from "@/trpc/api";
 import { useRouter } from "next/router";
-import { useForm } from "react-hook-form";
-import type { TParticipation } from "@/types/participation.type";
 
 import Loading from "@/components/loading";
-import { inputStyles } from "@/ui/input";
 import SendProject from "@/components/sendProject";
 
 const Send = () => {
@@ -33,13 +30,18 @@ const Send = () => {
   }
 
   return (
-    <div className="mx-auto flex h-screen flex-col items-center justify-center">
-      <SendProject
-        id={hackathon.id}
-        url={hackathon.url}
-        name={hackathon.name}
-      />
-    </div>
+    <>
+      <Head>
+        <title>Send project: {hackathon.name} - Project Hackathon</title>
+      </Head>
+      <div className="mx-auto flex h-screen flex-col items-center justify-center">
+        <SendProject
+          id={hackathon.id}
+          url={hackathon.url}
+          name={hackathon.name}
+        />
+      </div>
+    </>
   );
 };
 

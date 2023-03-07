@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { api } from "@/trpc/api";
 import type { Hackathon } from "@prisma/client";
 import { useState } from "react";
@@ -20,6 +21,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Head>
+        <title>Dashboard - Project Hackathon</title>
+      </Head>
       <div className="mt-16 flex w-full flex-wrap items-center justify-between gap-2 border-b border-neutral-800 py-4 px-6 sm:flex-nowrap sm:gap-0">
         <h1 className="text-2xl font-medium">Dashboard</h1>
         <div className="flex items-center space-x-2">
