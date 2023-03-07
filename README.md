@@ -65,8 +65,8 @@
 **For the participant:**
 
 - [x] The user can add his project.
-- [ ] The user can edit his project before a deadline.
-- [ ] When the deadline is reached, the user can only see the project.
+- [ ] The user can edit his project before a deadline (soon).
+- [ ] When the deadline is reached, the user can only see the project (soon).
 
 **For the admin:**
 
@@ -77,6 +77,22 @@
 - [x] The admin can see the list of projects.
 - [x] The user can set a winner (mark a user as a winner).
 - [x] The user can set a project as 'reviewed'.
+
+## 🪐 Overview
+
+- [**/prisma/schema.prisma**](https://github.com/pheralb/project-hackathon/blob/main/prisma/schema.prisma) - Database schema.
+- [**/src/animations**](https://github.com/pheralb/project-hackathon/tree/main/src/animations) - Framer motion animations.
+- [**/src/components**](https://github.com/pheralb/project-hackathon/tree/main/src/components) - All app components, built with Tailwind CSS.
+- [**/src/env**](https://github.com/pheralb/project-hackathon/tree/main/src/env) - Validate all environtment variables with Zod.
+- [**/src/layout**](https://github.com/pheralb/project-hackathon/tree/main/src/layout) - App header & footer.
+- [**/src/lib**](https://github.com/pheralb/project-hackathon/tree/main/src/lib) - getServerAuthSession (next-auth) & Prisma library.
+- [**/src/pages/api**](https://github.com/pheralb/project-hackathon/blob/main/src/pages/api) - Next-Auth config & tRPC api route.
+- [**/src/schema**](https://github.com/pheralb/project-hackathon/blob/main/src/schema) - Hackathon & Participation Zod schemas.
+- [**/src/styles**](https://github.com/pheralb/project-hackathon/blob/main/src/styles) - Tailwind CSS global styles + add custom font.
+- [**/src/trpc**](https://github.com/pheralb/project-hackathon/blob/main/src/trpc) - tRPC routers, initialization & global appRouter.
+- [**/src/types**](https://github.com/pheralb/project-hackathon/blob/main/src/types) - Hackathon, participation & next-auth types.
+- [**/src/ui**](https://github.com/pheralb/project-hackathon/blob/main/src/ui) - All UI components built with Radix + Tailwind (clsx).
+- [**/src/ui/icons**](https://github.com/pheralb/project-hackathon/blob/main/src/ui/icons) - Iconoir icons (we have extracted the icons used in the app due to a bug in the React library - [issue](https://github.com/iconoir-icons/iconoir/issues/243)).
 
 ## 🚀 Getting Started
 
