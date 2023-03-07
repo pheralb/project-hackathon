@@ -1,10 +1,10 @@
-import { Link } from "@/ui";
+import Link from "next/link";
 import styles from "./hackathonCard.module.css";
 
 interface hackathonCardProps {
   name: string;
   description: string;
-  url: string;
+  url?: string;
 }
 
 const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
@@ -18,8 +18,8 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
     target.style.setProperty("--mouse-y", `${y}px`);
   }
 
-  return (
-    <Link href={`/app/${url}`} className="flex max-w-sm flex-col items-center">
+  const renderCard = () => {
+    return (
       <div
         onMouseMove={handleMouseMove}
         className={`${styles.card} group relative h-full w-full
@@ -52,7 +52,24 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
           </div>
         </div>
       </div>
-    </Link>
+    );
+  };
+
+  return (
+    <>
+      {Boolean(url) ? (
+        <Link
+          href={`/app/${url}`}
+          className="flex max-w-sm flex-col items-center"
+        >
+          {renderCard()}
+        </Link>
+      ) : (
+        <div className="flex max-w-xs flex-col items-center">
+          {renderCard()}
+        </div>
+      )}
+    </>
   );
 };
 
