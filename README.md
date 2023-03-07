@@ -80,7 +80,7 @@
 
 ## 🚀 Getting Started
 
-### ⚙️ **Project settings:**
+### **Project settings:**
 
 1. Clone or [fork](git@github.com:pheralb/project-hackathon.git) the repository:
 
@@ -104,7 +104,7 @@ yarn install
 ultra install
 ```
 
-### ⚙️ **Environtment variables:**
+### **Environtment variables:**
 
 3. Create a `.env` file in the root of the project with the following variables:
 
@@ -121,20 +121,20 @@ GITHUB_CLIENT_ID=""
 GITHUB_CLIENT_SECRET=""
 ```
 
-### ⚙️ **CockroachDB settings:**
+### **CockroachDB settings:**
 
 4. [**Create a free cluster**](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart.html?#create-a-free-cluster).
 5. [**Create a SQL user**](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart.html?#create-a-sql-user).
 6. To connect to the user, copy the connection string and paste it in the `.env` file,
    replacing the `DATABASE_URL` variable.
 
-### ⚙️ **Github OAuth Provider settings:**
+### **Github OAuth Provider settings:**
 
 7. [Click here to create new Github OAuth app](https://github.com/settings/applications/new).
 8. Go to "Client secrets" and generate new client secret and and paste it into GITHUB_CLIENT_SECRET env.
 9. Copy the Client ID and paste it into GITHUB_ID env.
 
-### ⚙️ **Run the project:**
+### **Run the project:**
 
 10. Run in your terminal:
 
@@ -154,21 +154,13 @@ ultra dev
 
 and open [http://localhost:3000](http://localhost:3000) 🚀.
 
-## 📦 Overview
+## 😊 Contributing
 
-```
-📂 .vscode      | Visual Studio Code recommended extensions for the project.
-📂 public       | Images, fonts, manifest files.
-📂 src
-|- 📂 components    | Global components.
-|- 📂 env           | Manage environment variables with Zod.
-|- 📂 layout        | All layouts.
-|- 📂 pages         | All the pages of the project.
-|- 📂 schema        | Zod schemas.
-|- 📂 styles        | All the global styles of the project.
-|- 📂 types         | Global types.
-|- 📂 ui            | Tailwind CSS UI components.
-```
+<a href="https://github.com/pheralb/project-hackathon/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=pheralb/project-hackathon" />
+</a>
+
+<p></p>
 
 ## ☁ Deploy
 
