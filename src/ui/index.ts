@@ -17,3 +17,7 @@ export { default as Alert } from "./alert";
 
 // Input:
 export { default as Input } from "./input";
+
+// Tabs:
+export { TabsContent } from "./tabs";
+export { Tab } from "./tabs";
