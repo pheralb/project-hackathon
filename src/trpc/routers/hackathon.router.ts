@@ -11,15 +11,13 @@ import {
 export const hackathonRouter = createTRPCRouter({
   //------
   // Get all hackathons by user =>
-  allHackathons: publicProcedure
-    .input(filterHackathonSchema)
-    .query(({ ctx }) => {
-      return ctx.prisma.hackathon.findMany({
-        where: {
-          creatorId: ctx.session?.user?.id,
-        },
-      });
-    }),
+  allHackathons: publicProcedure.query(({ ctx }) => {
+    return ctx.prisma.hackathon.findMany({
+      where: {
+        creatorId: ctx.session?.user?.id,
+      },
+    });
+  }),
   //------
   // Create new hackathon =>
   createHackathon: publicProcedure
