@@ -9,16 +9,13 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center space-y-5 py-2">
       <Up>
-        <div className="relative mt-8 md:mt-0">
-          <div className="absolute z-10 h-full w-full rounded-full bg-white opacity-30 blur-xl" />
-          <Image
-            className="relative z-20"
-            src="/images/phck_logo.svg"
-            width={64}
-            height={64}
-            alt="Phck logo"
-          />
-        </div>
+        <Image
+          className="relative z-20"
+          src="/images/phck_logo.svg"
+          width={64}
+          height={64}
+          alt="Phck logo"
+        />
       </Up>
       <h1 className="text-center text-2xl sm:text-left md:mt-4 md:text-3xl">
         An open source hackathon management
