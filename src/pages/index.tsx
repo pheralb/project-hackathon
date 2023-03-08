@@ -1,21 +1,25 @@
+import Image from "next/image";
+
 import HackathonCard from "@/components/hackathonCard";
 import { Link } from "@/ui";
 import { ArrowRight } from "@/ui/icons";
-import Image from "next/image";
+import Up from "@/animations/up";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col items-center gap-4 md:h-screen md:justify-center">
-      <div className="relative mt-8 md:mt-0">
-        <div className="absolute z-10 h-full w-full rounded-full bg-white opacity-30 blur-xl" />
-        <Image
-          className="relative z-20 w-20 md:w-32"
-          src="/images/phck_logo.svg"
-          width={128}
-          height={128}
-          alt="Phck logo"
-        />
-      </div>
+    <div className="flex min-h-screen flex-col items-center justify-center space-y-5 py-2">
+      <Up>
+        <div className="relative mt-8 md:mt-0">
+          <div className="absolute z-10 h-full w-full rounded-full bg-white opacity-30 blur-xl" />
+          <Image
+            className="relative z-20"
+            src="/images/phck_logo.svg"
+            width={64}
+            height={64}
+            alt="Phck logo"
+          />
+        </div>
+      </Up>
       <h1 className="text-center text-2xl sm:text-left md:mt-4 md:text-3xl">
         An open source hackathon management
       </h1>
@@ -29,7 +33,7 @@ export default function Home() {
           <ArrowRight width={16} />
         </div>
       </Link>
-      <div className="mt-4 flex flex-col gap-4 md:flex-row md:gap-8">
+      <div className="mt-4 mb-6 flex flex-col gap-4 md:flex-row md:gap-3">
         <HackathonCard
           name="Simple, as it should be"
           description="Create hackathons in no time, review and decide who wins your event"

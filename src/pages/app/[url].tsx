@@ -8,6 +8,7 @@ import EditHackathon from "@/components/editHackathon";
 import Loading from "@/components/loading";
 import Prepare from "@/components/prepare";
 import ParticipationCard from "@/components/participationCard";
+import CopyKey from "@/components/copyKey";
 
 const DashUrl = () => {
   const router = useRouter();
@@ -48,12 +49,13 @@ const DashUrl = () => {
           </h1>
         </div>
         <div className="flex items-center space-x-3">
-          <Button icon={<KeyAltPlus width={18} />}>Copy key</Button>
+          <CopyKey url={data.hackathon.url} />
           <EditHackathon
             id={data.hackathon?.id || ""}
             key={data.hackathon?.url || ""}
             name={data.hackathon?.name || ""}
             description={data.hackathon?.description || ""}
+            url={data.hackathon?.url || ""}
             is_finished={false}
           />
         </div>
