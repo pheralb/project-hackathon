@@ -25,6 +25,7 @@ export const newParticipationSchema = z.object({
   title: z.string(),
   description: z.string(),
   hackathon_url: z.string(),
+  hackathon_name: z.string(),
   project_url: z.string(),
 });
 

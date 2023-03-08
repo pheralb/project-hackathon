@@ -48,6 +48,7 @@ const SendProject = (hackathonProps: iSendProject) => {
         description: data.description,
         project_url: data.project_url,
         hackathon_url: hackathonProps.url,
+        hackathon_name: hackathonProps.name,
       });
       toast.success("Your project has been successfully submitted");
     } catch (err) {
@@ -67,6 +68,7 @@ const SendProject = (hackathonProps: iSendProject) => {
       <div className="mt-4">
         <label htmlFor="title">Title:</label>
         <input
+          id="title"
           type="text"
           className={inputStyles}
           {...register("title", { required: true })}
@@ -75,13 +77,15 @@ const SendProject = (hackathonProps: iSendProject) => {
       <div className="mt-4">
         <label htmlFor="description">Description:</label>
         <textarea
+          id="description"
           className={inputStyles}
           {...register("description", { required: true })}
         />
       </div>
       <div className="mt-4">
         <label htmlFor="project_url">Url:</label>
-        <textarea
+        <input
+          id="project_url"
           className={inputStyles}
           {...register("project_url", { required: true })}
         />
