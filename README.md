@@ -13,6 +13,10 @@
         Team
     </a>
     <span>&nbsp;❖&nbsp;</span>
+    <a href="#-overview">
+        Overview
+    </a>
+    <span>&nbsp;❖&nbsp;</span>
     <a href="#-features">
         Features
     </a>
@@ -92,9 +96,9 @@
 - [**/src/trpc**](https://github.com/pheralb/project-hackathon/blob/main/src/trpc) - tRPC routers, initialization & global appRouter.
 - [**/src/types**](https://github.com/pheralb/project-hackathon/blob/main/src/types) - Hackathon, participation & next-auth types.
 - [**/src/ui**](https://github.com/pheralb/project-hackathon/blob/main/src/ui) - All UI components built with Radix + Tailwind (clsx).
-- [**/src/ui/icons**](https://github.com/pheralb/project-hackathon/blob/main/src/ui/icons) - Iconoir icons ⁖.
+- [**/src/ui/icons**](https://github.com/pheralb/project-hackathon/blob/main/src/ui/icons) - Iconoir icons \*.
 
-⁖ We have extracted the icons used in the app due to a bug in the React library - [issue](https://github.com/iconoir-icons/iconoir/issues/243).
+* We have extracted the icons used in the app due to a bug in the React library - [issue](https://github.com/iconoir-icons/iconoir/issues/243).
 
 ## 🚀 Getting Started
 
