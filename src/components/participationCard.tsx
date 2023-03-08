@@ -3,6 +3,7 @@ import { api } from "@/trpc/api";
 import { Button } from "@/ui";
 
 import Check from "@/ui/icons/check";
+import confetti from "canvas-confetti";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -28,6 +29,9 @@ const ParticipationCard = (props: participation) => {
       is_winner: true,
       is_reviewed: true,
     });
+    confetti({
+      spread: 100,
+    });
     toast.success(`Winner set for ${props.title} 🎉`);
   };
 
@@ -42,7 +46,7 @@ const ParticipationCard = (props: participation) => {
   };
 
   return (
-    <div className="flex items-center rounded-lg bg-neutral-800/40 shadow">
+    <div className="rounded-lg bg-neutral-800/40 shadow">
       <div className="w-full p-5">
         <h3 className="text-md font-bold tracking-tight text-gray-900 dark:text-white md:text-xl">
           {props.title}
@@ -50,7 +54,7 @@ const ParticipationCard = (props: participation) => {
         <span className="font-mono font-bold text-gray-500">
           {props.creatorName}
         </span>
-        <p className="mt-3 mb-6 font-light text-gray-500 dark:text-gray-400">
+        <p className="mt-3 mb-6 truncate font-light text-gray-500 dark:text-gray-400">
           {props.description}
         </p>
         <div className="flex w-full items-center justify-end space-x-2 overflow-x-auto">
@@ -68,7 +72,11 @@ const ParticipationCard = (props: participation) => {
           >
             {props.is_reviewed || reviewed ? "Reviewed" : "Review"}
           </Button>
-          <ViewProject project_url={props.project_url} />
+          <ViewProject
+            title={props.title}
+            description={props.description}
+            project_url={props.project_url}
+          />
         </div>
       </div>
     </div>

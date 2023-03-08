@@ -8,6 +8,7 @@ interface hackathonCardProps {
 }
 
 const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
+  
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     const target = e.target as HTMLDivElement;
     const rect = target.getBoundingClientRect();
@@ -23,8 +24,8 @@ const HackathonCard = ({ name, description, url }: hackathonCardProps) => {
       <div
         onMouseMove={handleMouseMove}
         className={`${styles.card} group relative h-full w-full
-        cursor-pointer rounded-xl
-        bg-white bg-opacity-10 before:absolute
+        {${url ? "cursor-pointer" : "cursor-default"}
+        rounded-xl bg-white bg-opacity-10 before:absolute
         before:top-0 before:left-0
         before:h-full before:w-full
         before:rounded-border-inherit before:opacity-0 before:transition-opacity

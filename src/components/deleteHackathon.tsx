@@ -32,6 +32,7 @@ const DeleteHackathon = (props: DeleteHackathonProps) => {
   );
 
   const deleteHackathonHandler = (id: string, word: string) => {
+    setLoading(true);
     if (randomWord === word) {
       try {
         deleteHackathon({

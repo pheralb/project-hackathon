@@ -14,6 +14,7 @@ import { toast } from "sonner";
 
 interface EditHackathonProps extends updateHackathon {
   key: string;
+  url: string;
 }
 
 const EditHackathon = (props: EditHackathonProps) => {
@@ -97,9 +98,10 @@ const EditHackathon = (props: EditHackathonProps) => {
           {errors.description && <Alert>{errors.description?.message}</Alert>}
         </div>
         <div className="mb-6">
-          <label htmlFor="description">Key:</label>
+          <label htmlFor="url">Key:</label>
           <input
-            defaultValue={props.key}
+            id="url"
+            defaultValue={props.url}
             className={inputStyles}
             autoComplete="off"
             disabled={true}
