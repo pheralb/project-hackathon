@@ -96,7 +96,7 @@ export const hackathonRouter = createTRPCRouter({
       });
     }),
   //------
-  // Get a single hackathon by URL without creatorid =>
+  // Get a single hackathon by URL without creatorid & check if user is a participant =>
   singleHackathon: publicProcedure
     .input(z.object({ url: z.string() }))
     .query(({ ctx, input }) => {
@@ -105,6 +105,17 @@ export const hackathonRouter = createTRPCRouter({
           url: input.url,
         },
       });
-      return hackathon;
+      const participants = ctx.prisma.participation.findMany({
+        where: {
+          hackathon_url: input.url,
+          creatorId: ctx.session?.user?.id,
+        },
+      });
+      return Promise.all([hackathon, participants]).then((values) => {
+        return {
+          hackathon: JSON.parse(JSON.stringify(values[0])),
+          participants: JSON.parse(JSON.stringify(values[1])),
+        };
+      });
     }),
 });
