@@ -27,7 +27,7 @@ const SendProject = (hackathonProps: iSendProject) => {
 
   const { mutate } = api.participation.createParticipation.useMutation({
     onSuccess: () => {
-      router.push(`/app/${hackathonProps.url}`);
+      router.push(`/app`);
       setLoading(false);
       confetti({
         particleCount: 100,
