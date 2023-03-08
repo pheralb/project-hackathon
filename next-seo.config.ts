@@ -34,16 +34,18 @@ export const nextSeoConfig = {
     url: "https://phck.vercel.app",
     type: "website",
     locale: "en_IE",
-    // images: [
-    //   {
-    //     url: "/img/banner.jpg",
-    //     width: 1920,
-    //     height: 1080,
-    //     type: "image/jpg",
-    //   },
-    // ],
+    images: [
+      {
+        url: "/images/og_image.jpg",
+        width: 1920,
+        height: 1080,
+        type: "image/jpg",
+      },
+    ],
   },
   twitter: {
+    handle: "@pheralb_",
+    site: "https://phck.vercel.app",
     cardType: "summary_large_image",
   },
 };
