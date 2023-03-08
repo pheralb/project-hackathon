@@ -91,7 +91,10 @@ const Dashboard = () => {
               <div className="container mx-auto mt-4">
                 <div className="flex flex-col space-y-3">
                   {data?.participants.map((participant) => (
-                    <div className="flex w-full flex-col justify-between rounded-md bg-neutral-800/40 p-4">
+                    <div
+                      key={participant.id}
+                      className="flex w-full flex-col justify-between rounded-md bg-neutral-800/40 p-4"
+                    >
                       <div className="flex items-center justify-between">
                         <p className="mb-1 text-xl">{participant.title}</p>
                         <Tooltip text="The hackathon administrators can mark each project as 'reviewed', here you will see if they have seen your project.">
