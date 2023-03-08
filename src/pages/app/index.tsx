@@ -72,7 +72,7 @@ const Dashboard = () => {
             <Down delay={0.2}>
               <div className="flex flex-col items-center justify-center">
                 <p className="mb-2 text-center text-neutral-300">
-                  You don't have any hackathons yet. Create one now!
+                  You don&apos;t have any hackathons yet. Create one now!
                 </p>
                 <ArrowDown width={32} className="mb-2" />
                 <CreateNew />
