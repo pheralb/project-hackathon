@@ -9,10 +9,8 @@ interface TabsContentProps {
 export const TabsContent = (props: TabsContentProps) => {
   return (
     <TabsPrimitive.Root defaultValue="tab1">
-      <TabsPrimitive.List
-        className={clsx("flex w-full rounded-t-lg bg-white dark:bg-gray-800")}
-      >
-        {props.children}
+      <TabsPrimitive.List className={clsx("flex w-full flex-col items-center")}>
+        <div className="flex ">{props.children}</div>
       </TabsPrimitive.List>
     </TabsPrimitive.Root>
   );
