@@ -12,10 +12,21 @@ export const hackathonRouter = createTRPCRouter({
   //------
   // Get all hackathons by user =>
   allHackathons: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.hackathon.findMany({
+    const hackathon = ctx.prisma.hackathon.findMany({
       where: {
         creatorId: ctx.session?.user?.id,
       },
+    });
+    const participants = ctx.prisma.participation.findMany({
+      where: {
+        creatorId: ctx.session?.user?.id,
+      },
+    });
+    return Promise.all([hackathon, participants]).then((values) => {
+      return {
+        hackathon: values[0],
+        participants: values[1],
+      };
     });
   }),
   //------
