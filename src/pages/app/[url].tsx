@@ -70,7 +70,7 @@ const DashUrl = () => {
           </div>
         </div>
       ) : (
-        <div className="mt-8 flex flex-col items-center justify-center space-y-3">
+        <div className="mt-8 mb-16 flex flex-col items-center justify-center space-y-3 px-6">
           <Prepare url={data.hackathon?.url || ""} />
         </div>
       )}

@@ -41,7 +41,7 @@ const Dashboard = () => {
           <CreateNew />
         </div>
       </div>
-      <div className="mx-auto mt-8 max-w-6xl px-6 md:px-0">
+      <div className="mx-auto mt-8 mb-16 max-w-6xl px-6 md:px-0">
         <div className="border-b border-neutral-800 pb-6">
           <h1 className="mb-4 text-2xl font-medium">Hackathons</h1>
           {data?.hackathon && data?.hackathon?.length > 0 ? (

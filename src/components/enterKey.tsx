@@ -21,26 +21,28 @@ const EnterKey = () => {
       btn={<Button icon={<Send width={18} />}>Send project</Button>}
       title="Send project"
     >
-      <div className="mb-2">
-        <label htmlFor="key">Key:</label>
-        <input
-          id="key"
-          className={inputStyles}
-          placeholder="https://phck.vercel.app/send/xxxxxx"
-          autoComplete="off"
-          onChange={(e) => setKey(e.target.value)}
-        />
-      </div>
-      <Tip>It is not necessary to write the complete url</Tip>
-      <div className="mt-4 flex flex-row-reverse">
-        <Button
-          onClick={() => goSendProject(key)}
-          disabled={loading}
-          loadingstatus={loading}
-        >
-          {loading ? "Preparing..." : "Continue"}
-        </Button>
-      </div>
+      <form onSubmit={() => goSendProject(key)}>
+        <div className="mb-2">
+          <label htmlFor="key">Key:</label>
+          <input
+            id="key"
+            className={inputStyles}
+            placeholder="https://phck.vercel.app/send/xxxxxx"
+            autoComplete="off"
+            onChange={(e) => setKey(e.target.value)}
+          />
+        </div>
+        <Tip>It is not necessary to write the complete url</Tip>
+        <div className="mt-4 flex flex-row-reverse">
+          <Button
+            onClick={() => goSendProject(key)}
+            disabled={loading}
+            loadingstatus={loading}
+          >
+            {loading ? "Preparing..." : "Continue"}
+          </Button>
+        </div>
+      </form>
     </Modal>
   );
 };
