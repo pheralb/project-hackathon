@@ -1,8 +1,11 @@
 <div align="center">
-    <!-- <img src="" width="80" /> -->
+<a href="https://phck.vercel.app/">
+<img src="public/images/screenshot.png">
+</a>
 </div>
 
-<p align="center">Open Source Hackathon Management</p>
+<p></p>
+
 
 <div align="center">
     <a href="#-getting-started">
