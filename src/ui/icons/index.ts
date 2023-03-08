@@ -1,6 +1,7 @@
 // Arrows:
 export { default as ArrowRight } from "./arrowRight";
 export { default as ArrowLeft } from "./arrowLeft";
+export { default as ArrowDown } from "./arrowDown";
 
 // Cancel:
 export { default as Cancel } from "./cancel";
