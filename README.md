@@ -6,7 +6,6 @@
 
 <p></p>
 
-
 <div align="center">
     <a href="#-getting-started">
         Getting Started
@@ -37,6 +36,7 @@
 
 <div align="center">
 
+[![GitHub actions](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Fproject-hackathon%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/project-hackathon/goto?ref=main)
 ![GitHub stars](https://img.shields.io/github/stars/pheralb/project-hackathon)
 ![GitHub issues](https://img.shields.io/github/issues/pheralb/project-hackathon)
 ![GitHub forks](https://img.shields.io/github/forks/pheralb/project-hackathon)
@@ -90,7 +90,7 @@
 - [**/prisma**](https://github.com/pheralb/project-hackathon/blob/main/prisma) - Database schema.
 - [**/src/animations**](https://github.com/pheralb/project-hackathon/tree/main/src/animations) - Framer motion animations.
 - [**/src/components**](https://github.com/pheralb/project-hackathon/tree/main/src/components) - All app components, built with Tailwind CSS.
-- [**/src/env**](https://github.com/pheralb/project-hackathon/tree/main/src/env) - Validate all environtment variables with Zod.
+- [**/src/env**](https://github.com/pheralb/project-hackathon/tree/main/src/env) - Validate all environment variables with Zod.
 - [**/src/layout**](https://github.com/pheralb/project-hackathon/tree/main/src/layout) - App header & footer.
 - [**/src/lib**](https://github.com/pheralb/project-hackathon/tree/main/src/lib) - getServerAuthSession (next-auth) & Prisma library.
 - [**/src/pages/api**](https://github.com/pheralb/project-hackathon/blob/main/src/pages/api) - Next-Auth config & tRPC api route.
@@ -129,7 +129,7 @@ yarn install
 ultra install
 ```
 
-### **Environtment variables:**
+### **Environment variables:**
 
 3. Create a `.env` file in the root of the project with the following variables:
 
