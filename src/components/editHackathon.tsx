@@ -11,6 +11,9 @@ import { Modal, Button, Alert } from "@/ui";
 import { inputStyles } from "@/ui/input";
 import DeleteHackathon from "./deleteHackathon";
 import { toast } from "sonner";
+import FinishHackathon from "./finishHackathon";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
+import clsx from "clsx";
 
 interface EditHackathonProps extends updateHackathon {
   key: string;
@@ -20,8 +23,8 @@ interface EditHackathonProps extends updateHackathon {
 const EditHackathon = (props: EditHackathonProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
-  const [validateWord, setValidateWord] = useState<boolean>();
-  const randomWord = nanoid(6);
+
+  console.log("props:", props);
 
   const {
     register,
@@ -59,7 +62,14 @@ const EditHackathon = (props: EditHackathonProps) => {
       btn={<Button icon={<Settings width={18} />}>Settings</Button>}
       title="Settings"
     >
-      <form className="mb-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
+      <Tabs defaultValue="info" className="w-full">
+        <TabsList className="w-full mb-2">
+          <TabsTrigger value="info">General</TabsTrigger>
+          <TabsTrigger value="finish">Finish hackathon</TabsTrigger>
+          <TabsTrigger value="delete">Delete hackathon</TabsTrigger>
+        </TabsList>
+        <TabsContent value="info">
+        <form className="mb-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-6">
           <label htmlFor="name">Title:</label>
           <input
@@ -102,7 +112,7 @@ const EditHackathon = (props: EditHackathonProps) => {
           <input
             id="url"
             defaultValue={props.url}
-            className={inputStyles}
+            className={clsx(inputStyles, "cursor-not-allowed")}
             autoComplete="off"
             disabled={true}
           />
@@ -118,7 +128,10 @@ const EditHackathon = (props: EditHackathonProps) => {
           </Button>
         </div>
       </form>
-      <DeleteHackathon id={props.id} />
+        </TabsContent>
+        <TabsContent value="finish"><FinishHackathon url={props.url} is_finished={props.is_finished} /></TabsContent>
+        <TabsContent value="delete"><DeleteHackathon id={props.id} /></TabsContent>
+      </Tabs>
     </Modal>
   );
 };

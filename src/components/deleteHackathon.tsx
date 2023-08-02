@@ -49,7 +49,7 @@ const DeleteHackathon = (props: DeleteHackathonProps) => {
 
   return (
     <div className="rounded-md border border-red-700/30 p-3">
-      <p className="mb-2 font-bold">Danger</p>
+      <p className="mb-2 font-bold">😢 Delete hackathon</p>
       <p>
         Deleting a hackathon is irreversible. If you want to delete this
         hackathon, please type{" "}

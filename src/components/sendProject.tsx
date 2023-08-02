@@ -13,6 +13,8 @@ interface iSendProject {
   id: string;
   url: string;
   name: string;
+  description?: string;
+  is_finished: boolean;
 }
 
 const SendProject = (hackathonProps: iSendProject) => {
@@ -58,12 +60,18 @@ const SendProject = (hackathonProps: iSendProject) => {
   };
 
   return (
-    <form
-      className="flex w-80 flex-col space-y-4 rounded-md border border-neutral-800 p-5"
+    <>
+    {!hackathonProps.is_finished ? (
+      <form
+      className="flex w-120 flex-col space-y-4 rounded-md border border-neutral-800 p-5"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="border-b border-neutral-800 pb-3">
         <h1 className="text-2xl font-medium">{hackathonProps.name}</h1>
+        {hackathonProps.description && (
+          <p className="text-gray-400">{hackathonProps.description}</p>
+        )}
+        <p>Created by</p>
       </div>
       <div className="mt-4">
         <label htmlFor="title">Title:</label>
@@ -119,6 +127,20 @@ const SendProject = (hackathonProps: iSendProject) => {
       </Button>
       <Tip>You can only submit 1 project per hackathon.</Tip>
     </form>
+    ) : (
+      <div className="flex w-120 flex-col space-y-4 rounded-md border border-neutral-800 p-5">
+        <div className="border-b border-neutral-800 pb-3">
+          <h1 className="text-2xl font-medium">{hackathonProps.name}</h1>
+          {hackathonProps.description && (
+            <p className="text-gray-400">{hackathonProps.description}</p>
+          )}
+          </div>
+          <p className="text-gray-400">
+            🎉 This hackathon is finished. You can no longer submit projects.
+          </p>
+        </div>
+    )}
+    </>
   );
 };
 
