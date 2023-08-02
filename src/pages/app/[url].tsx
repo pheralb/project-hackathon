@@ -56,7 +56,7 @@ const DashUrl = () => {
             name={data.hackathon?.name || ""}
             description={data.hackathon?.description || ""}
             url={data.hackathon?.url || ""}
-            is_finished={false}
+            is_finished={data.hackathon.is_finished}
           />
         </div>
       </div>

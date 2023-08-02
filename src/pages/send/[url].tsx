@@ -38,6 +38,8 @@ const Send = () => {
             id={data.hackathon.id}
             url={data.hackathon.url}
             name={data.hackathon.name}
+            description={data.hackathon.description}
+            is_finished={data.hackathon.is_finished}
           />
         ) : (
           <div className="flex flex-col items-center justify-center">
