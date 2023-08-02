@@ -118,4 +118,23 @@ export const hackathonRouter = createTRPCRouter({
         };
       });
     }),
+  //------
+  // Finish hackathon =>
+  finishHackathon: publicProcedure
+    .input(z.object({ url: z.string() }))
+    .mutation(({ ctx, input }) => {
+      const finishHackathon = ctx.prisma.hackathon.update({
+        where: {
+          url_creatorId: {
+            url: input.url,
+            creatorId: ctx.session?.user?.id,
+          },
+        },
+        data: {
+          is_finished: true,
+        },
+      });
+      return finishHackathon;
+    }
+    ),
 });
