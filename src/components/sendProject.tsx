@@ -71,7 +71,6 @@ const SendProject = (hackathonProps: iSendProject) => {
         {hackathonProps.description && (
           <p className="text-gray-400">{hackathonProps.description}</p>
         )}
-        <p>Created by</p>
       </div>
       <div className="mt-4">
         <label htmlFor="title">Title:</label>
