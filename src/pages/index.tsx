@@ -1,9 +1,11 @@
 import Image from "next/image";
 
 import HackathonCard from "@/components/hackathonCard";
-import { Link } from "@/ui";
-import { ArrowRight } from "@/ui/icons";
+import { ExternalLink, Link } from "@/ui";
+import { ArrowRight, Github } from "@/ui/icons";
 import Up from "@/animations/up";
+import { ButtonStyles } from "@/ui/button";
+import clsx from "clsx";
 
 export default function Home() {
   return (
@@ -20,23 +22,30 @@ export default function Home() {
       <h1 className="text-center text-2xl sm:text-left md:mt-4 md:text-3xl">
         An open source hackathon management
       </h1>
-      <Link
-        href="auth"
-        underline={false}
-        className="transition-all duration-200 hover:translate-x-0.5"
-      >
-        <div className="flex items-center space-x-2">
-          <span>Get Started</span>
-          <ArrowRight width={16} />
-        </div>
-      </Link>
-      <div className="mt-4 mb-6 flex flex-col gap-4 md:flex-row md:gap-3">
+      <div className="flex items-center space-x-2">
+        <ExternalLink
+          href="https://github.com/pheralb/project-hackathon"
+          className={ButtonStyles}
+        >
+          <div className="flex items-center space-x-2">
+            <Github width={16} />
+            <span>Repository</span>
+          </div>
+        </ExternalLink>
+        <Link href="auth" underline={false} className={clsx(ButtonStyles)}>
+          <div className="flex items-center space-x-2">
+            <span>Get Started</span>
+            <ArrowRight width={16} />
+          </div>
+        </Link>
+      </div>
+      <div className="mb-6 mt-4 flex flex-col gap-4 md:flex-row md:gap-3">
         <HackathonCard
-          name="Simple, as it should be"
+          name="✨ Simple, as it should be"
           description="Create hackathons in no time, review and decide who wins your event"
         />
         <HackathonCard
-          name="Share, create and participate"
+          name="🚀 Share and participate"
           description="Share with friends and power your event with organization"
         />
       </div>
