@@ -23,9 +23,6 @@ interface EditHackathonProps extends updateHackathon {
 const EditHackathon = (props: EditHackathonProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>();
-
-  console.log("props:", props);
-
   const {
     register,
     handleSubmit,
@@ -63,74 +60,80 @@ const EditHackathon = (props: EditHackathonProps) => {
       title="Settings"
     >
       <Tabs defaultValue="info" className="w-full">
-        <TabsList className="w-full mb-2">
+        <TabsList className="mb-2 w-full">
           <TabsTrigger value="info">General</TabsTrigger>
           <TabsTrigger value="finish">Finish hackathon</TabsTrigger>
           <TabsTrigger value="delete">Delete hackathon</TabsTrigger>
         </TabsList>
         <TabsContent value="info">
-        <form className="mb-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-6">
-          <label htmlFor="name">Title:</label>
-          <input
-            id="name"
-            defaultValue={props.name}
-            className={inputStyles}
-            placeholder="Hackathon name (max 25 characters)"
-            autoComplete="off"
-            disabled={loading}
-            {...register("name", {
-              required: "Hackathon name is required",
-              maxLength: {
-                value: 25,
-                message: "Hackathon name must be less than 25 characters",
-              },
-            })}
-          />
-          {errors.name && <Alert>{errors.name?.message}</Alert>}
-        </div>
-        <div className="mb-6">
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            defaultValue={props.description}
-            className={inputStyles}
-            placeholder="Description (max 200 characters)"
-            autoComplete="off"
-            disabled={loading}
-            {...register("description", {
-              maxLength: {
-                value: 200,
-                message: "Description must be less than 200 characters",
-              },
-            })}
-          />
-          {errors.description && <Alert>{errors.description?.message}</Alert>}
-        </div>
-        <div className="mb-6">
-          <label htmlFor="url">Key:</label>
-          <input
-            id="url"
-            defaultValue={props.url}
-            className={clsx(inputStyles, "cursor-not-allowed")}
-            autoComplete="off"
-            disabled={true}
-          />
-        </div>
-        <div className="flex flex-row-reverse">
-          <Button
-            type="submit"
-            disabled={loading}
-            loadingstatus={loading}
-            icon={<SaveFloppyDisk width={17} />}
-          >
-            {loading ? "Playing Kukoro..." : "Save"}
-          </Button>
-        </div>
-      </form>
+          <form className="mb-3 space-y-3" onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-6">
+              <label htmlFor="name">Title:</label>
+              <input
+                id="name"
+                defaultValue={props.name}
+                className={inputStyles}
+                placeholder="Hackathon name (max 25 characters)"
+                autoComplete="off"
+                disabled={loading}
+                {...register("name", {
+                  required: "Hackathon name is required",
+                  maxLength: {
+                    value: 25,
+                    message: "Hackathon name must be less than 25 characters",
+                  },
+                })}
+              />
+              {errors.name && <Alert>{errors.name?.message}</Alert>}
+            </div>
+            <div className="mb-6">
+              <label htmlFor="description">Description:</label>
+              <textarea
+                id="description"
+                defaultValue={props.description}
+                className={inputStyles}
+                placeholder="Description (max 200 characters)"
+                autoComplete="off"
+                disabled={loading}
+                {...register("description", {
+                  maxLength: {
+                    value: 200,
+                    message: "Description must be less than 200 characters",
+                  },
+                })}
+              />
+              {errors.description && (
+                <Alert>{errors.description?.message}</Alert>
+              )}
+            </div>
+            <div className="mb-6">
+              <label htmlFor="url">Key:</label>
+              <input
+                id="url"
+                defaultValue={props.url}
+                className={clsx(inputStyles, "cursor-not-allowed")}
+                autoComplete="off"
+                disabled={true}
+              />
+            </div>
+            <div className="flex flex-row-reverse">
+              <Button
+                type="submit"
+                disabled={loading}
+                loadingstatus={loading}
+                icon={<SaveFloppyDisk width={17} />}
+              >
+                {loading ? "Playing Kukoro..." : "Save"}
+              </Button>
+            </div>
+          </form>
         </TabsContent>
-        <TabsContent value="finish"><FinishHackathon url={props.url} is_finished={props.is_finished} /></TabsContent>
-        <TabsContent value="delete"><DeleteHackathon id={props.id} /></TabsContent>
+        <TabsContent value="finish">
+          <FinishHackathon url={props.url} is_finished={props.is_finished} />
+        </TabsContent>
+        <TabsContent value="delete">
+          <DeleteHackathon id={props.id} />
+        </TabsContent>
       </Tabs>
     </Modal>
   );

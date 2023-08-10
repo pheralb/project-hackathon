@@ -1,7 +1,7 @@
 import { api } from "@/trpc/api";
 import { useState } from "react";
 import type { THackathon } from "@/types/hackathon.type";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 
