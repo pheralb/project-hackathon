@@ -15,9 +15,9 @@ const Card = ({ name, description, url }: hackathonCardProps) => {
     <div
       onMouseMove={handleMouseMove}
       className={`${styles.card} group relative h-full w-full
-        cursor-pointer rounded-xl
+        cursor-pointer rounded-md
         bg-white bg-opacity-10 before:absolute
-        before:top-0 before:left-0
+        before:left-0 before:top-0
         before:h-full before:w-full
         before:rounded-border-inherit before:opacity-0 before:transition-opacity
         before:duration-500 before:content-['']
@@ -25,7 +25,7 @@ const Card = ({ name, description, url }: hackathonCardProps) => {
     >
       <div
         className={`${styles.card_border} absolute
-        top-0 left-0
+        left-0 top-0
         h-full w-full
         rounded-border-inherit opacity-0 transition-opacity
         duration-500 content-['']
