@@ -2,8 +2,8 @@ import { api } from "@/trpc/api";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { Button, Link } from "@/ui";
-import { ArrowLeft, KeyAltPlus } from "@/ui/icons";
+import { Link } from "@/ui";
+import { ArrowLeft } from "@/ui/icons";
 import EditHackathon from "@/components/editHackathon";
 import Loading from "@/components/loading";
 import Prepare from "@/components/prepare";
@@ -28,7 +28,8 @@ const DashUrl = () => {
   }
 
   if (error || !data || !data.hackathon) {
-    return router.push("/app");
+    router.push("/app");
+    return null;
   }
 
   return (
@@ -36,7 +37,7 @@ const DashUrl = () => {
       <Head>
         <title>{data.hackathon?.name} - Project Hackathon</title>
       </Head>
-      <div className="mt-16 flex w-full flex-col justify-between space-y-3 border-b border-neutral-800 py-4 px-6 md:flex-row md:items-center md:space-y-0">
+      <div className="mt-16 flex w-full flex-col justify-between space-y-3 border-b border-neutral-800 px-6 py-4 md:flex-row md:items-center md:space-y-0">
         <div className="flex items-center space-x-4">
           <Link href="/app">
             <ArrowLeft
@@ -70,7 +71,7 @@ const DashUrl = () => {
           </div>
         </div>
       ) : (
-        <div className="mt-8 mb-16 flex flex-col items-center justify-center space-y-3 px-6">
+        <div className="mb-16 mt-8 flex flex-col items-center justify-center space-y-3 px-6">
           <Prepare url={data.hackathon?.url || ""} />
         </div>
       )}
