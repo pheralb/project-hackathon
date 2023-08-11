@@ -65,9 +65,11 @@ const DashUrl = () => {
         <div className="container mx-auto mt-8 px-6">
           <p className="mb-3">{data.participants.length} participants</p>
           <div className="mb-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mb-16">
-            {data.participants.map((participant) => (
-              <ParticipationCard key={participant.id} {...participant} />
-            ))}
+            {data.participants
+              .sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+              .map((participant) => (
+                <ParticipationCard key={participant.id} {...participant} />
+              ))}
           </div>
         </div>
       ) : (

@@ -34,14 +34,14 @@ const Dashboard = () => {
       <Head>
         <title>Dashboard - Project Hackathon</title>
       </Head>
-      <div className="mt-16 flex w-full flex-wrap items-center justify-between gap-2 border-b border-neutral-800 py-4 px-6 sm:flex-nowrap sm:gap-0">
+      <div className="mt-16 flex w-full flex-wrap items-center justify-between gap-2 border-b border-neutral-800 px-6 py-4 sm:flex-nowrap sm:gap-0">
         <h1 className="text-2xl font-medium">Dashboard</h1>
         <div className="flex items-center space-x-2">
           <EnterKey />
           <CreateNew />
         </div>
       </div>
-      <div className="mx-auto mt-8 mb-16 max-w-6xl px-6 md:px-0">
+      <div className="mx-auto mb-16 mt-8 max-w-6xl px-6 md:px-0">
         <div className="border-b border-neutral-800 pb-6">
           <h1 className="mb-4 text-2xl font-medium">Hackathons</h1>
           {data?.hackathon && data?.hackathon?.length > 0 ? (
@@ -53,17 +53,21 @@ const Dashboard = () => {
               />
               <div className="container mx-auto mt-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {data?.hackathon.map(
-                    (hackathon: Hackathon) =>
-                      hackathon.name.includes(search) && (
-                        <HackathonCard
-                          key={hackathon.id}
-                          name={hackathon.name}
-                          description={hackathon.description || ""}
-                          url={hackathon.url}
-                        />
-                      ),
-                  )}
+                  {data?.hackathon
+                    .sort(
+                      (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime(),
+                    )
+                    .map(
+                      (hackathon: Hackathon) =>
+                        hackathon.name.includes(search) && (
+                          <HackathonCard
+                            key={hackathon.id}
+                            name={hackathon.name}
+                            description={hackathon.description || ""}
+                            url={hackathon.url}
+                          />
+                        ),
+                    )}
                 </div>
               </div>
             </>
